@@ -16,8 +16,9 @@ namespace AspNet5Localization
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             services.AddMvc()
-              .AddViewLocalization(options => options.ResourcesPath = "Resources")
               .AddDataAnnotationsLocalization();
         }
 
