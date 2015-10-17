@@ -16,10 +16,10 @@ namespace AspNet5Localization
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            //services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddMvc()
-              .AddDataAnnotationsLocalization();
+            services.AddMvc();//.AddViewLocalization();
+              //.AddDataAnnotationsLocalization();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
