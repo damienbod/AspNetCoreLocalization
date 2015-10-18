@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspNet5Localization.Resources;
+﻿using AspNet5Localization.Resources;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Localization;
 
@@ -16,10 +12,8 @@ namespace AspNet5Localization.Controllers
         public AboutController(IHtmlLocalizer<AmazingResource> localizer)
         {
             _htmlLocalizer = localizer;
-
         }
 
-        // GET: api/values
         [HttpGet]
         public string Get()
         {
