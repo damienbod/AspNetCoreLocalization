@@ -16,10 +16,11 @@ namespace AspNet5Localization
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddMvc();//.AddViewLocalization();
-              //.AddDataAnnotationsLocalization();
+            services.AddMvc()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -27,8 +28,6 @@ namespace AspNet5Localization
             loggerFactory.MinimumLevel = LogLevel.Information;
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
-
-            app.UseIISPlatformHandler();
 
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
@@ -43,9 +42,13 @@ namespace AspNet5Localization
                 }
             });
 
+            app.UseIISPlatformHandler();
+
             app.UseStaticFiles();
 
             app.UseMvc();
+
+            
         }
     }
 }
