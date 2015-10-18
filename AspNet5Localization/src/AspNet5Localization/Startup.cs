@@ -29,7 +29,7 @@ namespace AspNet5Localization
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
-            app.UseRequestLocalization(new RequestLocalizationOptions
+            var requestLocalizationOptions = new RequestLocalizationOptions
             {
                 DefaultRequestCulture = new RequestCulture(new CultureInfo("en-US")),
                 SupportedCultures = new List<CultureInfo>
@@ -40,7 +40,11 @@ namespace AspNet5Localization
                 {
                     new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
                 }
-            });
+            };
+            requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>();
+            requestLocalizationOptions.RequestCultureProviders.Add(new AcceptLanguageHeaderRequestCultureProvider());
+            requestLocalizationOptions.RequestCultureProviders.Add(new QueryStringRequestCultureProvider());
+            app.UseRequestLocalization(requestLocalizationOptions);
 
             app.UseIISPlatformHandler();
 
