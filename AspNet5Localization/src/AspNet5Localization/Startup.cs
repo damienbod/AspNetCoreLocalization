@@ -29,23 +29,24 @@ namespace AspNet5Localization
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
-            var requestLocalizationOptions = new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(new CultureInfo("en-US")),
-                SupportedCultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
-                },
-                SupportedUICultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
-                }
-            };
-            requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>();
-            requestLocalizationOptions.RequestCultureProviders.Add(new AcceptLanguageHeaderRequestCultureProvider());
-            requestLocalizationOptions.RequestCultureProviders.Add(new QueryStringRequestCultureProvider());
-            app.UseRequestLocalization(requestLocalizationOptions);
+            //var requestLocalizationOptions = new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(new CultureInfo("en-US")),
+            //    SupportedCultures = new List<CultureInfo>
+            //    {
+            //        new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
+            //    },
+            //    SupportedUICultures = new List<CultureInfo>
+            //    {
+            //        new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
+            //    }
+            //};
+            //requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>();
+            //requestLocalizationOptions.RequestCultureProviders.Add(new AcceptLanguageHeaderRequestCultureProvider());
+            //requestLocalizationOptions.RequestCultureProviders.Add(new QueryStringRequestCultureProvider());
+            //app.UseRequestLocalization(requestLocalizationOptions);
 
+            app.UseRequestLocalization(new RequestLocalizationOptions());
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
