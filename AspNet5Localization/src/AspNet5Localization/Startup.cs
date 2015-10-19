@@ -41,6 +41,10 @@ namespace AspNet5Localization
                     new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
                 }
             };
+
+            //requestLocalizationOptions.RequestCultureProviders.Clear();
+            //requestLocalizationOptions.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
+
             //requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>();
             //requestLocalizationOptions.RequestCultureProviders.Add(new AcceptLanguageHeaderRequestCultureProvider());
             //requestLocalizationOptions.RequestCultureProviders.Add(new QueryStringRequestCultureProvider());
