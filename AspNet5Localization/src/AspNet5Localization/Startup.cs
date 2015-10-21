@@ -44,31 +44,13 @@ namespace AspNet5Localization
                 }
             };
 
-            //requestLocalizationOptions.RequestCultureProviders.Clear();
-            //requestLocalizationOptions.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
-
-            //requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>();
-            //requestLocalizationOptions.RequestCultureProviders.Add(new AcceptLanguageHeaderRequestCultureProvider());
-            //requestLocalizationOptions.RequestCultureProviders.Add(new QueryStringRequestCultureProvider());
             app.UseRequestLocalization(requestLocalizationOptions);
 
-           // app.UseRequestLocalization(new RequestLocalizationOptions());
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
             app.UseMvc();
-            //app.UseMvc(routes =>
-
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=About}/{action=Index}/{id?}")
-            //          .MapRoute(
-            //        name: "defaultculture",
-            //        template: "{culture=en-US}/{controller=About}/{action=Index}/{id?}")
-            //);
-
-            
         }
     }
 }
