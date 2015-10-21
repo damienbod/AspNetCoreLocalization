@@ -21,6 +21,8 @@ namespace AspNet5Localization
             services.AddMvc()
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
+
+            services.AddScoped<LanguageActionFilter>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -56,6 +58,15 @@ namespace AspNet5Localization
             app.UseStaticFiles();
 
             app.UseMvc();
+            //app.UseMvc(routes =>
+
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=About}/{action=Index}/{id?}")
+            //          .MapRoute(
+            //        name: "defaultculture",
+            //        template: "{culture=en-US}/{controller=About}/{action=Index}/{id?}")
+            //);
 
             
         }
