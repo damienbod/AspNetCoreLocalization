@@ -14,9 +14,9 @@ namespace AspNet5Localization
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
-        {
-            _logger.LogInformation("OnActionExecuting");
+        {         
             string culture = context.RouteData.Values["culture"].ToString();
+            _logger.LogInformation($"Setting the culture from the URL: {culture}");
 
 #if DNX451
             System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(culture);
