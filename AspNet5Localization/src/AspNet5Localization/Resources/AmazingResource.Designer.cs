@@ -60,6 +60,24 @@ namespace AspNet5Localization.Resources {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to The box length should be between 1 and a 100 en-GB.
+        /// </summary>
+        internal static string BoxLengthRange {
+            get {
+                return ResourceManager.GetString("BoxLengthRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to The box length in required en-GB.
+        /// </summary>
+        internal static string BoxLengthRequired {
+            get {
+                return ResourceManager.GetString("BoxLengthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to Description en-GB.
         /// </summary>
         internal static string Description {
