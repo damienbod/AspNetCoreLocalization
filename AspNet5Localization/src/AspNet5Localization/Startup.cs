@@ -36,11 +36,18 @@ namespace AspNet5Localization
                 DefaultRequestCulture = new RequestCulture(new CultureInfo("en-US")),
                 SupportedCultures = new List<CultureInfo>
                 {
-                    new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
+                    new CultureInfo("en-US"),
+                    new CultureInfo("de-CH"),
+                    new CultureInfo("fr-CH"),
+
+                    new CultureInfo("it-CH")
                 },
                 SupportedUICultures = new List<CultureInfo>
                 {
-                    new CultureInfo("en-US"), new CultureInfo("de-CH"), new CultureInfo("fr-CH"), new CultureInfo("it-CH")
+                    new CultureInfo("en-US"),
+                    new CultureInfo("de-CH"),
+                    new CultureInfo("fr-CH"),
+                    new CultureInfo("it-CH")
                 }
             };
 
