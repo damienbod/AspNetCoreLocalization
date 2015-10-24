@@ -34,7 +34,7 @@ namespace AspNet5Localization.Controllers
             }
             else
             {           
-                string url = Url.RouteUrl("GetByIdRoute", new { id = 11111 },
+                string url = Url.RouteUrl("api/boxes", new { id = 11111 },
                     Request.Scheme, Request.Host.ToUriComponent());
 
                 return Created(url, box);
