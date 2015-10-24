@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspNet5Localization.Model;
+﻿using AspNet5Localization.Model;
 using Microsoft.AspNet.Mvc;
 
 namespace AspNet5Localization.Controllers
