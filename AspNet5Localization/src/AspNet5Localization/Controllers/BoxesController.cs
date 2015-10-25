@@ -67,7 +67,7 @@ namespace AspNet5Localization.Controllers
                 return HttpNotFound(id);
             }
 
-            return Ok();
+            return new NoContentResult();
         }
     }
 }
