@@ -63,11 +63,15 @@ namespace AspNet5Localization
             };
 
             app.UseRequestLocalization(requestLocalizationOptions,  new RequestCulture("en-US"));
+
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
             app.UseMvc();
         }
+
+        // Entry point for the application.
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }
