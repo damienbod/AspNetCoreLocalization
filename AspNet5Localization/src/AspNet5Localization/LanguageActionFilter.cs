@@ -1,9 +1,11 @@
 ﻿using System.Globalization;
 using Microsoft.AspNet.Mvc.Filters;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace AspNet5Localization
 {
+    using Microsoft.Extensions.Logging;
+
     public class LanguageActionFilter : ActionFilterAttribute
     {
         private readonly ILogger _logger;

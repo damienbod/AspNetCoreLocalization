@@ -3,8 +3,12 @@ using System.Globalization;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Localization;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Logging;
+
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace AspNet5Localization
 {
@@ -12,7 +16,15 @@ namespace AspNet5Localization
     {
         public Startup(IHostingEnvironment env)
         {
+            // Set up configuration sources.
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
+
+        public IConfigurationRoot Configuration { get; set; }
+
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -32,8 +44,7 @@ namespace AspNet5Localization
             loggerFactory.AddDebug();
 
             var requestLocalizationOptions = new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(new CultureInfo("en-US")),
+            {  
                 SupportedCultures = new List<CultureInfo>
                 {
                     new CultureInfo("en-US"),
@@ -51,8 +62,7 @@ namespace AspNet5Localization
                 }
             };
 
-            app.UseRequestLocalization(requestLocalizationOptions);
-
+            app.UseRequestLocalization(requestLocalizationOptions,  new RequestCulture("en-US"));
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
