@@ -28,7 +28,7 @@ namespace AspNet5Localization.Resources {
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
-        internal AmazingResource() {
+        public AmazingResource() {
         }
         
         /// <summary>
