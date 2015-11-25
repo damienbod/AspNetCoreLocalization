@@ -22,13 +22,13 @@ namespace AspNet5Localization.Resources {
     // with the /str option, or rebuild your VS project.
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AmazingResource {
+    public class AspNet5Localization_Resources_AmazingResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
-        public AmazingResource() {
+        internal AspNet5Localization_Resources_AmazingResource() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace AspNet5Localization.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AspNet5Localization.Resources.AmazingResource", typeof(AmazingResource).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AspNet5Localization.Resources.AspNet5Localization.Resources.AmazingResource", typeof(AspNet5Localization_Resources_AmazingResource).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
