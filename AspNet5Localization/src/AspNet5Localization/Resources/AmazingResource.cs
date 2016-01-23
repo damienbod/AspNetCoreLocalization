@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace AspNet5Localization.Resources
 {
     /// <summary>
-    /// This silly class is required due to the silly magic strings required so that the localization works.
-    /// Don't feel like rewriting the IStringLocalizerFactory and/or IStringLocalizer class....
+    /// This class is required due to the way the default implementation of localization works.
+    /// The IStringLocalizerFactory and/or IStringLocalizer class could also be implemented instead of this.
     /// https://github.com/aspnet/Localization/issues/150
     /// 
     /// Thanks to Joe Audette for this solution.
