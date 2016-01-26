@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Threading;
-using AspNet5Localization.Resources;
 
 namespace AspNet5Localization.Controllers
 {

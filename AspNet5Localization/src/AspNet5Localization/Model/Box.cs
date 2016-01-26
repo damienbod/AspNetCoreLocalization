@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AspNet5Localization.Resources;
 
 namespace AspNet5Localization.Model
 {
+    using AspNet5Localization.Controllers;
+
     public class Box
     {
         public long Id { get; set; }
