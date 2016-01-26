@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
-using Microsoft.AspNet.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 
 namespace AspNet5Localization
 {
+    using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.Logging;
 
     public class LanguageActionFilter : ActionFilterAttribute

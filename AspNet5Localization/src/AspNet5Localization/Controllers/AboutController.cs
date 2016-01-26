@@ -1,25 +1,28 @@
 ﻿using System.Globalization;
 using System.Threading;
 using AspNet5Localization.Resources;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Localization;
 
 namespace AspNet5Localization.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Localization;
+    using Microsoft.Extensions.Localization;
+
     [Route("api/[controller]")]
     public class AboutController : Controller
     {
-        private IHtmlLocalizer<AmazingResource> _htmlLocalizer;
+        private readonly IStringLocalizer<AmazingResource> _localizer;
 
-        public AboutController(IHtmlLocalizer<AmazingResource> localizer)
+       
+        public AboutController(IStringLocalizer<AmazingResource> localizer)
         {
-            _htmlLocalizer = localizer;
+            _localizer = localizer;
         }
 
         [HttpGet]
         public string Get()
         {
-            return _htmlLocalizer["Name"];
+            return _localizer["Name"];
         }
     }
 }
