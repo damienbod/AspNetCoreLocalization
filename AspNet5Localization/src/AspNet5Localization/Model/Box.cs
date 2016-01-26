@@ -12,8 +12,8 @@ namespace AspNet5Localization.Model
 
         public double Width { get; set; }
 
-        [Required(ErrorMessageResourceName = "BoxLengthRequired", ErrorMessageResourceType = typeof(AmazingResource))]
-        [Range(1.0, 100.0, ErrorMessageResourceName = "BoxLengthRange", ErrorMessageResourceType = typeof(AmazingResource))]
+        [Required(ErrorMessageResourceName = "BoxLengthRequired", ErrorMessageResourceType = typeof(SharedResource))]
+        [Range(1.0, 100.0, ErrorMessageResourceName = "BoxLengthRange", ErrorMessageResourceType = typeof(SharedResource))]
         public double Length { get; set; }
     }
 }

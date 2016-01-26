@@ -11,10 +11,10 @@ namespace AspNet5Localization.Controllers
         // http://localhost:5000/api/it-CH/AboutWithCultureInRoute
         // http://localhost:5000/api/fr-CH/AboutWithCultureInRoute
 
-        private readonly IStringLocalizer<AmazingResource> _localizer;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
 
-        public AboutWithCultureInRouteController(IStringLocalizer<AmazingResource> localizer)
+        public AboutWithCultureInRouteController(IStringLocalizer<SharedResource> localizer)
         {
             _localizer = localizer;
         }

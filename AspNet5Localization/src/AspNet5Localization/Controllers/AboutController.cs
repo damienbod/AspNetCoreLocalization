@@ -10,10 +10,10 @@ namespace AspNet5Localization.Controllers
     [Route("api/[controller]")]
     public class AboutController : Controller
     {
-        private readonly IStringLocalizer<AmazingResource> _localizer;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
        
-        public AboutController(IStringLocalizer<AmazingResource> localizer)
+        public AboutController(IStringLocalizer<SharedResource> localizer)
         {
             _localizer = localizer;
         }
