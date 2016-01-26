@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
@@ -42,12 +36,12 @@ namespace AspNet5Localization
                 options =>
                     {
                         var supportedCultures = new List<CultureInfo>
-                                                    {
-                                                        new CultureInfo("en-US"),
-                                                        new CultureInfo("de-CH"),
-                                                        new CultureInfo("fr-CH"),
-                                                        new CultureInfo("it-CH")
-                                                    };
+                        {
+                            new CultureInfo("en-US"),
+                            new CultureInfo("de-CH"),
+                            new CultureInfo("fr-CH"),
+                            new CultureInfo("it-CH")
+                        };
 
 
 
@@ -81,25 +75,6 @@ namespace AspNet5Localization
         {
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
-
-            var requestLocalizationOptions = new RequestLocalizationOptions
-            {  
-                SupportedCultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"),
-                    new CultureInfo("de-CH"),
-                    new CultureInfo("fr-CH"),
-
-                    new CultureInfo("it-CH")
-                },
-                SupportedUICultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"),
-                    new CultureInfo("de-CH"),
-                    new CultureInfo("fr-CH"),
-                    new CultureInfo("it-CH")
-                }
-            };
 
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
