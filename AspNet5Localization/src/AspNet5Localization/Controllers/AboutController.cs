@@ -11,17 +11,19 @@ namespace AspNet5Localization.Controllers
     public class AboutController : Controller
     {
         private readonly IStringLocalizer<SharedResource> _localizer;
+        private readonly IStringLocalizer<AboutController> _aboutLocalizerizer;
 
-       
-        public AboutController(IStringLocalizer<SharedResource> localizer)
+        public AboutController(IStringLocalizer<SharedResource> localizer, IStringLocalizer<AboutController> aboutLocalizerizer)
         {
             _localizer = localizer;
+            _aboutLocalizerizer = aboutLocalizerizer;
         }
 
         [HttpGet]
         public string Get()
         {
-            return _localizer["Name"];
+            // _localizer["Name"] 
+            return _aboutLocalizerizer["AboutTitle"];
         }
     }
 }
