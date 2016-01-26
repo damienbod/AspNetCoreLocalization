@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNet5Localization.Controllers
+namespace AspNet5Localization
 {
     /// <summary>
     /// This class is required due to the way the default implementation of localization works.
