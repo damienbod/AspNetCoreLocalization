@@ -7,13 +7,12 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using AspNet5Localization.DbStringLocalizer;
 
 namespace AspNet5Localization
 {
-    using AspNet5Localization.DbStringLocalizer;
-
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Localization;
+    using System;
 
     public class Startup
     {
@@ -35,10 +34,13 @@ namespace AspNet5Localization
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
             services.AddEntityFramework()
-              .AddDbContext<LocalizationModelSqliteContext>(options =>
-                  options.UseSqlite(sqlConnectionString));
+                .AddSqlite()
+                .AddDbContext<LocalizationModelSqliteContext>( 
+                    options =>options.UseSqlite(sqlConnectionString));
 
-            services.AddMvc().AddViewLocalization().AddDataAnnotationsLocalization();
+            services.AddMvc()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization();
 
             services.AddScoped<LanguageActionFilter>();
 
@@ -61,19 +63,19 @@ namespace AspNet5Localization
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            try
-            {
-                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                                             .CreateScope())
-                {
-                    serviceScope.ServiceProvider.GetService<LocalizationModelSqliteContext>()
-                                .Database.Migrate();
-                }
-            }
-            catch
-            {
-                // ignored
-            }
+            //try
+            //{
+            //    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+            //                                 .CreateScope())
+            //    {
+            //        serviceScope.ServiceProvider.GetService<LocalizationModelSqliteContext>()
+            //                    .Database.Migrate();
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    string rr = ex.Message;
+            //}
 
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();

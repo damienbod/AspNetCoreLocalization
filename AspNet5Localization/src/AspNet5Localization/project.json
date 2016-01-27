@@ -12,6 +12,7 @@
         "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.0-rc2-*",
         "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.0.0-rc2-*",
         "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-*",
+        "Microsoft.Data.Sqlite": "1.0.0-rc2-*",
 
         "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-*",
