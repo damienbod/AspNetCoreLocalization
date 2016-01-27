@@ -7,7 +7,8 @@
 
     "dependencies": {
         "Microsoft.EntityFrameworkCore.Commands": "1.0.0-rc2-*",
-        "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0-rc2-*",
+        "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-*",
+        "Microsoft.EntityFrameworkCore": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0-rc2-*",
@@ -35,12 +36,13 @@
         "Microsoft.Extensions.Localization.Abstractions": "1.0.0-rc2-*",
         "Microsoft.AspNet.Localization": "1.0.0-rc2-*",
         "Microsoft.Extensions.Localization": "1.0.0-rc2-*",
-        "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-16968"
+        "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-*"
     },
 
     "commands": {
         "AspNet5Localization": "AspNet5Localization",
-        "web": "AspNet5Localization"
+        "web": "AspNet5Localization",
+        "ef": "Microsoft.EntityFrameworkCore.Commands"
     },
 
     "frameworks": {

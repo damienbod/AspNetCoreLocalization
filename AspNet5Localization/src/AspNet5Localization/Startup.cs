@@ -10,6 +10,11 @@ using Microsoft.Extensions.Options;
 
 namespace AspNet5Localization
 {
+    using AspNet5Localization.DbStringLocalizer;
+
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Localization;
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -23,10 +28,15 @@ namespace AspNet5Localization
 
         public IConfigurationRoot Configuration { get; set; }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
+
+            services.AddEntityFramework()
+              .AddDbContext<LocalizationModelSqliteContext>(options =>
+                  options.UseSqlite(sqlConnectionString));
 
             services.AddMvc().AddViewLocalization().AddDataAnnotationsLocalization();
 
@@ -51,6 +61,20 @@ namespace AspNet5Localization
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                                             .CreateScope())
+                {
+                    serviceScope.ServiceProvider.GetService<LocalizationModelSqliteContext>()
+                                .Database.Migrate();
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
