@@ -13,7 +13,7 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<LocalizationRecord>().HasKey(m => m.Id);
-            builder.Entity<LocalizationRecord>().HasKey(m => m.LocalizationCulture + m.Key);
+            //builder.Entity<LocalizationRecord>().HasKey(m => m.LocalizationCulture + m.Key);
 
             // shadow properties
             builder.Entity<LocalizationRecord>().Property<DateTime>("UpdatedTimestamp");
@@ -23,14 +23,14 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var builder = new ConfigurationBuilder()
-           .AddJsonFile("appsettings.json")
-           .AddEnvironmentVariables();
-            var configuration = builder.Build();
+           // var builder = new ConfigurationBuilder()
+           //.AddJsonFile("appsettings.json")
+           //.AddEnvironmentVariables();
+           // var configuration = builder.Build();
 
-            var sqlConnectionString = configuration["DbStringLocalizer:ConnectionString"];
+           // var sqlConnectionString = configuration["DbStringLocalizer:ConnectionString"];
 
-            optionsBuilder.UseSqlite(sqlConnectionString);
+           // optionsBuilder.UseSqlite(sqlConnectionString);
         }
 
         public override int SaveChanges()
