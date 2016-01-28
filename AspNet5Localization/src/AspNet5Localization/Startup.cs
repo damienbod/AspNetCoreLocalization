@@ -36,10 +36,10 @@ namespace AspNet5Localization
 
             services.AddEntityFramework()
                  .AddSqlite()
-                 .AddDbContext<LocalizationModelSqliteContext>(
+                 .AddDbContext<LocalizationModelContext>(
                      options => options.UseSqlite(sqlConnectionString));
 
-            // Requires that LocalizationModelSqliteContext is defined
+            // Requires that LocalizationModelContext is defined
             //services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
             services.AddSqlLocalization();
 
@@ -68,20 +68,6 @@ namespace AspNet5Localization
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //try
-            //{
-            //    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-            //                                 .CreateScope())
-            //    {
-            //        serviceScope.ServiceProvider.GetService<LocalizationModelSqliteContext>()
-            //                    .Database.Migrate();
-            //    }
-            //}
-            //catch(Exception ex)
-            //{
-            //    string rr = ex.Message;
-            //}
-
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
@@ -97,8 +83,6 @@ namespace AspNet5Localization
             app.UseMvc();
         }
 
- 
-        // Entry point for the application.
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()

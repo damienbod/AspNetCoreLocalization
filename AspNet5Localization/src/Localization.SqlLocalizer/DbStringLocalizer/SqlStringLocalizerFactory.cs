@@ -9,19 +9,19 @@
 
     public class SqlStringLocalizerFactory : IStringLocalizerFactory
     {
-        private readonly LocalizationModelSqliteContext _context;
+        private readonly LocalizationModelContext _context;
         private readonly Dictionary<string, IStringLocalizer> _resourceLocalizations = new Dictionary<string, IStringLocalizer>();
         private readonly IOptions<SqlLocalizationOptions> _options;
         private const string Global = "global";
 
         public SqlStringLocalizerFactory(
-           LocalizationModelSqliteContext context,
+           LocalizationModelContext context,
            IApplicationEnvironment applicationEnvironment,
            IOptions<SqlLocalizationOptions> localizationOptions)
         {
             if (context == null)
             {
-                throw new ArgumentNullException(nameof(LocalizationModelSqliteContext));
+                throw new ArgumentNullException(nameof(LocalizationModelContext));
             }
 
             if (applicationEnvironment == null)

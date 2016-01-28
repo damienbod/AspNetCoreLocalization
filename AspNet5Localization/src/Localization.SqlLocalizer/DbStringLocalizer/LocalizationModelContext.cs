@@ -6,7 +6,7 @@
     using Microsoft.EntityFrameworkCore;
 
     // >dnx ef migration add LocalizationMigration
-    public class LocalizationModelSqliteContext : DbContext
+    public class LocalizationModelContext : DbContext
     {
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
 
@@ -21,25 +21,10 @@
             base.OnModelCreating(builder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-           // var builder = new ConfigurationBuilder()
-           //.AddJsonFile("appsettings.json")
-           //.AddEnvironmentVariables();
-           // var configuration = builder.Build();
-
-           // var sqlConnectionString = configuration["DbStringLocalizer:ConnectionString"];
-
-           // optionsBuilder.UseSqlite(sqlConnectionString);
-        }
-
         public override int SaveChanges()
         {
             ChangeTracker.DetectChanges();
-
             updateUpdatedProperty<LocalizationRecord>();
-
-
             return base.SaveChanges();
         }
 
