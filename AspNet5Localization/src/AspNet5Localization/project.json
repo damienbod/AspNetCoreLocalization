@@ -6,6 +6,9 @@
     },
 
     "dependencies": {
+
+        "Localization.SqlLocalizer": "1.0.0.0",
+
         "Microsoft.EntityFrameworkCore.Commands": "1.0.0-rc2-*",
         "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-*",
         "Microsoft.EntityFrameworkCore": "1.0.0-rc2-*",
@@ -39,7 +42,8 @@
         "Microsoft.Extensions.Globalization.CultureInfoCache": "1.0.0-rc2-*",
         "Microsoft.Extensions.Localization.Abstractions": "1.0.0-rc2-*",
         "Microsoft.Extensions.Localization": "1.0.0-rc2-*",
-        "Microsoft.Extensions.CodeGeneration": "1.0.0-rc2-*"
+        "Microsoft.Extensions.CodeGeneration": "1.0.0-rc2-*",
+        "System.Reflection": "4.1.0-rc2-*"
     },
 
     "commands": {

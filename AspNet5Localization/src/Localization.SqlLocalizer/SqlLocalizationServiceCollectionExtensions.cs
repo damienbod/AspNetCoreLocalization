@@ -4,7 +4,8 @@ using Microsoft.Extensions.Localization;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    using AspNet5Localization.DbStringLocalizer;
+    using global::Localization.SqlLocalizer;
+    using global::Localization.SqlLocalizer.DbStringLocalizer;
 
     /// <summary>
     /// Extension methods for adding localization servics to the DI container.
@@ -34,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddSqlLocalization(
             this IServiceCollection services,
-            Action<LocalizationOptions> setupAction)
+            Action<SqlLocalizationOptions> setupAction)
         {
             if (services == null)
             {
@@ -46,9 +47,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 typeof(SqlStringLocalizerFactory),
                 ServiceLifetime.Singleton));
             services.TryAdd(new ServiceDescriptor(
-                typeof(IStringLocalizer<>),
-                typeof(SqlStringLocalizer<>),
-                ServiceLifetime.Transient));
+                typeof(IStringLocalizer),
+                typeof(SqlStringLocalizer),
+                ServiceLifetime.Singleton));
 
             if (setupAction != null)
             {

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
-using AspNet5Localization.DbStringLocalizer;
+using Localization.SqlLocalizer.DbStringLocalizer;
 
 namespace AspNet5Localization
 {
-    using System;
+    using Localization.SqlLocalizer;
 
     public class Startup
     {
@@ -29,14 +29,19 @@ namespace AspNet5Localization
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
-
+            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+     
+            // init database for localization
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
             services.AddEntityFramework()
-                .AddSqlite()
-                .AddDbContext<LocalizationModelSqliteContext>( 
-                    options =>options.UseSqlite(sqlConnectionString));
+                 .AddSqlite()
+                 .AddDbContext<LocalizationModelSqliteContext>(
+                     options => options.UseSqlite(sqlConnectionString));
+
+            // Requires that LocalizationModelSqliteContext is defined
+            //services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
+            services.AddSqlLocalization();
 
             services.AddMvc()
                 .AddViewLocalization()

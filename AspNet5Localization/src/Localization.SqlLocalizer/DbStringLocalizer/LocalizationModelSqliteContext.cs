@@ -1,14 +1,14 @@
-﻿namespace AspNet5Localization.DbStringLocalizer
+﻿namespace Localization.SqlLocalizer.DbStringLocalizer
 {
     using System;
     using System.Linq;
+
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
 
     // >dnx ef migration add LocalizationMigration
     public class LocalizationModelSqliteContext : DbContext
     {
-        public DbSet<LocalizationRecord> DataEventRecords { get; set; }
+        public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

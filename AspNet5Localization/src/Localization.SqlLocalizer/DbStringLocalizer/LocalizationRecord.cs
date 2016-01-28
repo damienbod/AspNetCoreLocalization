@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AspNet5Localization.DbStringLocalizer
+﻿namespace Localization.SqlLocalizer.DbStringLocalizer
 {
     public class LocalizationRecord
     {
@@ -14,5 +9,6 @@ namespace AspNet5Localization.DbStringLocalizer
         public string Text { get; set; }
 
         public string LocalizationCulture { get; set; }
+        public string ResourceKey { get; internal set; }
     }
 }
