@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNet5Localization.Resources
+namespace AspNet5Localization
 {
     /// <summary>
     /// This class is required due to the way the default implementation of localization works.
@@ -15,7 +15,7 @@ namespace AspNet5Localization.Resources
     /// 
     /// Resource files must be named with namespace...
     /// </summary>
-    public class AmazingResource
+    public class SharedResource
     {
     }
 }

@@ -1,11 +1,9 @@
-﻿using System.Globalization;
-using System.Threading;
-using AspNet5Localization.Resources;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Localization;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace AspNet5Localization.Controllers
 {
+
     [ServiceFilter(typeof(LanguageActionFilter))]
     [Route("api/{culture}/[controller]")]
     public class AboutWithCultureInRouteController : Controller
@@ -13,17 +11,18 @@ namespace AspNet5Localization.Controllers
         // http://localhost:5000/api/it-CH/AboutWithCultureInRoute
         // http://localhost:5000/api/fr-CH/AboutWithCultureInRoute
 
-        private IHtmlLocalizer<AmazingResource> _htmlLocalizer;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public AboutWithCultureInRouteController(IHtmlLocalizer<AmazingResource> localizer)
+
+        public AboutWithCultureInRouteController(IStringLocalizer<SharedResource> localizer)
         {
-            _htmlLocalizer = localizer;
+            _localizer = localizer;
         }
 
         [HttpGet]
         public string Get()
         {
-            return _htmlLocalizer["Name"];
+            return _localizer["Name"];
         }
     }
 }
