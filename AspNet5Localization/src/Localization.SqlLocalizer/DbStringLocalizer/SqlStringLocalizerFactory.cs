@@ -1,6 +1,7 @@
 ﻿namespace Localization.SqlLocalizer.DbStringLocalizer
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Extensions.Localization;
@@ -10,7 +11,7 @@
     public class SqlStringLocalizerFactory : IStringLocalizerFactory
     {
         private readonly LocalizationModelContext _context;
-        private readonly Dictionary<string, IStringLocalizer> _resourceLocalizations = new Dictionary<string, IStringLocalizer>();
+        private readonly ConcurrentDictionary<string, IStringLocalizer> _resourceLocalizations = new ConcurrentDictionary<string, IStringLocalizer>();
         private readonly IOptions<SqlLocalizationOptions> _options;
         private const string Global = "global";
 
@@ -50,8 +51,8 @@
                 }
 
                 sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(Global), Global);
-                _resourceLocalizations.Add(Global, sqlStringLocalizer);
-                return sqlStringLocalizer;
+                return _resourceLocalizations.GetOrAdd(Global, sqlStringLocalizer);
+                
             }
 
             if (_options.Value.UseTypeFullNames)
@@ -62,8 +63,7 @@
                 }
 
                 sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.FullName), resourceSource.FullName);
-                _resourceLocalizations.Add(resourceSource.FullName, sqlStringLocalizer);
-                return sqlStringLocalizer;
+                _resourceLocalizations.GetOrAdd(resourceSource.FullName, sqlStringLocalizer);
             }
 
 
@@ -73,8 +73,7 @@
             }
 
             sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.Name), resourceSource.Name);
-            _resourceLocalizations.Add(resourceSource.Name, sqlStringLocalizer);
-            return sqlStringLocalizer;
+            return _resourceLocalizations.GetOrAdd(resourceSource.Name, sqlStringLocalizer);
         }
 
         public IStringLocalizer Create(string baseName, string location)
@@ -85,8 +84,7 @@
             }
 
             var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(baseName + location), baseName + location);
-            _resourceLocalizations.Add(baseName + location, sqlStringLocalizer);
-            return sqlStringLocalizer;
+            return _resourceLocalizations.GetOrAdd(baseName + location, sqlStringLocalizer);
         }
 
         private Dictionary<string, string> GetAllFromDatabaseForResource(string resourceKey)
