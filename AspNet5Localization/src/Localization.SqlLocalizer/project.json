@@ -29,7 +29,10 @@
     },
 
     "frameworks": {
-        "dnx451": { },
-        "dnxcore50": { }
+        "netcoreapp1.0": {
+            "imports": [
+                "portable-net45+wp80+win8+wpa81+dnxcore50"
+            ]
+        }
     }
 }

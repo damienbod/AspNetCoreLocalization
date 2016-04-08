@@ -12,6 +12,7 @@ using Localization.SqlLocalizer.DbStringLocalizer;
 
 namespace AspNet5Localization
 {
+    using System.IO;
     using Localization.SqlLocalizer;
 
     public class Startup
@@ -34,8 +35,7 @@ namespace AspNet5Localization
             // init database for localization
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
-            services.AddEntityFramework()
-                 .AddSqlite()
+            services.AddEntityFrameworkSqlite()
                  .AddDbContext<LocalizationModelContext>(
                      options => options.UseSqlite(sqlConnectionString));
 
@@ -86,10 +86,12 @@ namespace AspNet5Localization
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                .UseDefaultConfiguration(args)
-                .UseIISPlatformHandlerUrl()
-                .UseStartup<Startup>()
-                .Build();
+                        .UseKestrel()
+                        .UseContentRoot(Directory.GetCurrentDirectory())
+                        .UseDefaultHostingConfiguration(args)
+                        .UseIISIntegration()
+                        .UseStartup<Startup>()
+                        .Build();
 
             host.Run();
         }
