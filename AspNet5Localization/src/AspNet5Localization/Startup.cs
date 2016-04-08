@@ -89,7 +89,7 @@ namespace AspNet5Localization
                         .UseKestrel()
                         .UseContentRoot(Directory.GetCurrentDirectory())
                         .UseDefaultHostingConfiguration(args)
-                        .UseIISIntegration()
+                        .UseIIS()
                         .UseStartup<Startup>()
                         .Build();
 

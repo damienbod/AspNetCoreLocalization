@@ -19,19 +19,16 @@
 
         "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-*",
-        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-*",
-        "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-*",
-        "System.Runtime.Serialization.Primitives": "4.1.1-*",
+        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-*",
+        "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-rc2-*",
+        "System.Runtime.Serialization.Primitives": "4.1.1-rc2-*",
 
         "Microsoft.AspNetCore.IISPlatformHandler": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Localization": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Mvc.Localization": "1.0.0-rc2-*",
-        "Microsoft.AspNetCore.Mvc.Razor": "1.0.0-rc2-*",
-        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-*",
-        "Microsoft.AspNetCore.Tooling.Razor": "1.0.0-rc2-*",
         "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-*",
 
         "Microsoft.Extensions.CodeGenerators.Mvc": "1.0.0-rc2-*",
@@ -47,7 +44,8 @@
         "Microsoft.Extensions.Localization.Abstractions": "1.0.0-rc2-*",
         "Microsoft.Extensions.Localization": "1.0.0-rc2-*",
         "Microsoft.Extensions.CodeGeneration": "1.0.0-rc2-*",
-        "System.Reflection": "4.1.0-rc2-*"
+        "System.Reflection": "4.1.0-rc2-*",
+        "Microsoft.NETCore.Platforms": "1.0.1-*"
     },
 
     "commands": {
@@ -62,6 +60,9 @@
                 "portable-net45+wp80+win8+wpa81+dnxcore50"
             ]
         }
+    },
+    "runtimes": {
+        "win81-x64": { }
     },
 
     "exclude": [
