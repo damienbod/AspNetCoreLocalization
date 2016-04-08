@@ -59,7 +59,8 @@
             "imports": [
                 "portable-net45+wp80+win8+wpa81+dnxcore50"
             ]
-        }
+        },
+        "dnxcore50": { }
     },
     "runtimes": {
         "win81-x64": { }
@@ -74,7 +75,10 @@
         "**.vspscc"
     ],
     "tools": {
-        "dotnet-publish-iis": "1.0.0-*"
+        "dotnet-publish-iis": "1.0.0-*",
+        "dotnet-ef": "1.0.0-*",
+        "dotnet-watch": "1.0.0-*",
+        "dotnet-razor-tooling": "1.0.0-*"
     },
     "scripts": {
         "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath%"
