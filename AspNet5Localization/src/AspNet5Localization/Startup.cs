@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
 using Localization.SqlLocalizer.DbStringLocalizer;
 
 namespace AspNet5Localization
@@ -74,24 +79,19 @@ namespace AspNet5Localization
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
 
-            var options = new IISPlatformHandlerOptions();
-            options.AuthenticationDescriptions.Clear();
-            app.UseIISPlatformHandler(options);
-
             app.UseStaticFiles();
 
             app.UseMvc();
         }
 
-        public static void Main(string[] args)
+       public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                        .UseKestrel()
-                        .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseDefaultHostingConfiguration(args)
-                        .UseIIS()
-                        .UseStartup<Startup>()
-                        .Build();
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
 
             host.Run();
         }
