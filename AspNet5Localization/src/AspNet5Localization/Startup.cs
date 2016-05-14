@@ -48,19 +48,12 @@ namespace AspNet5Localization
             // init database for localization
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
-			//var sqlConnectionString = "Data Source=C:\\git\\damienbod\\AspNet5Localization\\AspNet5Localization\\src\\AspNet5Localization\\LocalizationRecords.sqlite";
-			
-			services.AddEntityFrameworkSqlite()
-				.AddDbContext<LocalizationModelContext>(options =>
-					options.UseSqlite(
-						sqlConnectionString, 
-						b => b.MigrationsAssembly("Localization.SqlLocalizer")
-					)
-				);
-				
-            //services.AddEntityFrameworkSqlite()
-            //     .AddDbContext<LocalizationModelContext>(
-            //         options => options.UseSqlite(sqlConnectionString));
+			services.AddDbContext<LocalizationModelContext>(options =>
+				options.UseSqlite(
+					sqlConnectionString, 
+					b => b.MigrationsAssembly("Localization.SqlLocalizer")
+				)
+			);
 
             // Requires that LocalizationModelContext is defined
             //services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
