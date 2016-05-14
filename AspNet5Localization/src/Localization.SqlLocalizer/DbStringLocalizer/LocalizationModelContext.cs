@@ -5,11 +5,11 @@
 
     using Microsoft.EntityFrameworkCore;
 
-    // >dotnet ef migration add LocalizationMigration
+    // >dotnet ef migrations add LocalizationMigration
     public class LocalizationModelContext : DbContext
     {
-		public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options) :base(options)
-		{ }
+        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options) :base(options)
+        { }
 		
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
 		

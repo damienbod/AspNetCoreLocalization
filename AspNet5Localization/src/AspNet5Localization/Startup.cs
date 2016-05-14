@@ -43,20 +43,20 @@ namespace AspNet5Localization
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+            // services.AddLocalization(options => options.ResourcesPath = "Resources");
      
             // init database for localization
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
-			services.AddDbContext<LocalizationModelContext>(options =>
-				options.UseSqlite(
-					sqlConnectionString, 
-					b => b.MigrationsAssembly("Localization.SqlLocalizer")
-				)
-			);
+            services.AddDbContext<LocalizationModelContext>(options =>
+            	options.UseSqlite(
+            		sqlConnectionString, 
+            		b => b.MigrationsAssembly("Localization.SqlLocalizer")
+            	)
+            );
 
             // Requires that LocalizationModelContext is defined
-            //services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
+            // services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
             services.AddSqlLocalization();
 
             services.AddMvc()
