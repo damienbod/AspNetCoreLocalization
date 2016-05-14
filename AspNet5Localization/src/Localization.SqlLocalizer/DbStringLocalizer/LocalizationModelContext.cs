@@ -9,13 +9,12 @@
     public class LocalizationModelContext : DbContext
     {
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
-
-		
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-		    var sqlConnectionString = "Data Source=C:\\git\\damienbod\\AspNet5Localization\\AspNet5Localization\\src\\AspNet5Localization\\LocalizationRecords.sqlite";
-            optionsBuilder.UseSqlite(sqlConnectionString);
-        }
+	
+		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+		//    var sqlConnectionString = "Data Source=C:\\git\\damienbod\\AspNet5Localization\\AspNet5Localization\\src\\AspNet5Localization\\LocalizationRecords.sqlite";
+        //    optionsBuilder.UseSqlite(sqlConnectionString);
+        //}
 		
         protected override void OnModelCreating(ModelBuilder builder)
         {

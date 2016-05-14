@@ -7,6 +7,18 @@
       "type": "platform"
     },
 	"Localization.SqlLocalizer": "1.0.0.0",
+	"Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Tools.Core": "1.0.0-rc2-final",
+	"Microsoft.EntityFrameworkCore.Tools.Cli": "1.0.0-preview1-final",
+	"Microsoft.EntityFrameworkCore.Tools": {
+      "version": "1.0.0-preview1-final",
+      "imports": [
+        "portable-net45+win8+dnxcore50",
+        "portable-net45+win8"
+      ]
+    },
+	
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-final",
@@ -19,14 +31,11 @@
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
-    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-final",
-    "Microsoft.EntityFrameworkCore.Tools": {
-      "version": "1.0.0-preview1-final",
-      "type": "build"
-    },
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
+	"Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
+	 "Microsoft.Extensions.DependencyModel": "1.0.0-*",
     "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
@@ -42,6 +51,7 @@
   },
 
   "tools": {
+    "dotnet-ef": "1.0.0-*",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview1-final",
       "imports": "portable-net45+win8+dnxcore50"
