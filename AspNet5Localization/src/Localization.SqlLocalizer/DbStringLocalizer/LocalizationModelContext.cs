@@ -5,11 +5,14 @@
 
     using Microsoft.EntityFrameworkCore;
 
-    // >dnx ef migration add LocalizationMigration
+    // >dotnet ef migrations add LocalizationMigration
     public class LocalizationModelContext : DbContext
     {
+        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options) :base(options)
+        { }
+		
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
-
+		
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<LocalizationRecord>().HasKey(m => m.Id);

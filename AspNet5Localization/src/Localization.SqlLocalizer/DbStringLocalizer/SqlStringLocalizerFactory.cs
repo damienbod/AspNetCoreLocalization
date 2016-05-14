@@ -17,17 +17,11 @@
 
         public SqlStringLocalizerFactory(
            LocalizationModelContext context,
-           IApplicationEnvironment applicationEnvironment,
            IOptions<SqlLocalizationOptions> localizationOptions)
         {
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(LocalizationModelContext));
-            }
-
-            if (applicationEnvironment == null)
-            {
-                throw new ArgumentNullException(nameof(applicationEnvironment));
             }
 
             if (localizationOptions == null)
