@@ -20,7 +20,10 @@ namespace AspNet5Localization
             string culture = context.RouteData.Values["culture"].ToString();
             _logger.LogInformation($"Setting the culture from the URL: {culture}");
 
-#if DNX451
+#if NET451
+            System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(culture);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
+#elif NET46
             System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(culture);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
 #else

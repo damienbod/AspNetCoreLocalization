@@ -44,7 +44,9 @@
         private string GetText(string key)
         {
 
-#if DNX451
+#if NET451
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+#elif NET46
             var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
 #else
              var culture = CultureInfo.CurrentCulture.ToString();
