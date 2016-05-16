@@ -1,9 +1,8 @@
 ﻿using AspNet5Localization.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNet5Localization.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-
     [Route("api/[controller]")]
     public class BoxesController : Controller
     {
