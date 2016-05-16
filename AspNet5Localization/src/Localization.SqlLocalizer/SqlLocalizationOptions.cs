@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Localization.SqlLocalizer
+﻿namespace Localization.SqlLocalizer
 {
-    using Localization.SqlLocalizer.DbStringLocalizer;
-
     public class SqlLocalizationOptions
     {
         /// <summary>

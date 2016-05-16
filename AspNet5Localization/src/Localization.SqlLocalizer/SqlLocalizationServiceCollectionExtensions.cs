@@ -1,12 +1,11 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Localization;
+using Localization.SqlLocalizer;
+using Localization.SqlLocalizer.DbStringLocalizer;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    using global::Localization.SqlLocalizer;
-    using global::Localization.SqlLocalizer.DbStringLocalizer;
-
     /// <summary>
     /// Extension methods for adding localization servics to the DI container.
     /// </summary>

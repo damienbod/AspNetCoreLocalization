@@ -1,13 +1,12 @@
-﻿namespace Localization.SqlLocalizer.DbStringLocalizer
-{
-    using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Extensions.Localization;
-    using Microsoft.Extensions.Options;
-    using Microsoft.Extensions.PlatformAbstractions;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 
+namespace Localization.SqlLocalizer.DbStringLocalizer
+{
     public class SqlStringLocalizerFactory : IStringLocalizerFactory
     {
         private readonly LocalizationModelContext _context;

@@ -1,10 +1,10 @@
-﻿namespace Localization.SqlLocalizer.DbStringLocalizer
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using Microsoft.Extensions.Localization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using Microsoft.Extensions.Localization;
 
+namespace Localization.SqlLocalizer.DbStringLocalizer
+{
     public class SqlStringLocalizer : IStringLocalizer
     {
         private readonly Dictionary<string, string> _localizations;
