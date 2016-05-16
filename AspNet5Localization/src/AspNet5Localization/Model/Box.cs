@@ -1,9 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Globalization;
-using AspNet5Localization.Controllers;
-using Microsoft.Extensions.Localization;
-	
+    
 namespace AspNet5Localization.Model
 {
     public class Box

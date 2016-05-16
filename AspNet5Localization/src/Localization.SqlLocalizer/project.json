@@ -6,23 +6,16 @@
       "version": "1.0.0-rc2-3002702",
       "type": "platform"
     },
-	
-	"Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
-	"Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-final",
-	// "Microsoft.EntityFrameworkCore.Sqlite.Design": { "version": "1.0.0-*", "type": "build" },
-    "Microsoft.EntityFrameworkCore.Tools": {
-      "version": "1.0.0-preview1-final",
-      "type": "build"
-    },
-	
+    
+    "Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Sqlite.Design": { "version": "1.0.0-rc2-final", "type": "build" },
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-final",
-	"Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-final",
-	"Microsoft.EntityFrameworkCore.Sqlite.Design": "1.0.0-rc2-final",
-	"Microsoft.EntityFrameworkCore.Tools.Core": "1.0.0-rc2-final",
-	"Microsoft.EntityFrameworkCore.Tools.Cli": "1.0.0-preview1-final",
-	    "Microsoft.EntityFrameworkCore.Tools": {
+    "Microsoft.EntityFrameworkCore.Tools.Core": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Tools.Cli": "1.0.0-preview1-final",
+      "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview1-final",
       "imports": [
         "portable-net45+win8+dnxcore50",
@@ -42,8 +35,8 @@
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
-	"Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
-	"Microsoft.Extensions.Localization": "1.0.0-rc2-final",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Localization": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",

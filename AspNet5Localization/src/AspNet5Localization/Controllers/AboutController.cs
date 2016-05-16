@@ -3,7 +3,7 @@ using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
-	
+    
 namespace AspNet5Localization.Controllers
 {
     [Route("api/[controller]")]
