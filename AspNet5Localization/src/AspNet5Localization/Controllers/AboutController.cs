@@ -1,12 +1,11 @@
 ﻿using System.Globalization;
 using System.Threading;
-
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
+	
 namespace AspNet5Localization.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Localization;
-    using Microsoft.Extensions.Localization;
-
     [Route("api/[controller]")]
     public class AboutController : Controller
     {

@@ -49,7 +49,7 @@
 #elif NET46
             var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
 #else
-             var culture = CultureInfo.CurrentCulture.ToString();
+            var culture = CultureInfo.CurrentCulture.ToString();
 #endif
             string computedKey = $"{key}.{culture}";
 
