@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.IO;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,6 @@ using Localization.SqlLocalizer.DbStringLocalizer;
 
 namespace AspNet5Localization
 {
-    using System.IO;
-
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -46,7 +45,7 @@ namespace AspNet5Localization
             services.AddDbContext<LocalizationModelContext>(options =>
             	options.UseSqlite(
             		sqlConnectionString, 
-            		b => b.MigrationsAssembly("Localization.SqlLocalizer")
+            		b => b.MigrationsAssembly("AspNet5Localization")
             	)
             );
 
@@ -90,7 +89,7 @@ namespace AspNet5Localization
             app.UseMvc();
         }
 
-       public static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
