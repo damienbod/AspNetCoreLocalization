@@ -1,4 +1,4 @@
-Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/ElasticsearchCRUD.svg?style=flat-square)](https://www.nuget.org/packages/Localization.SqlLocalizer/)
+Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localization.SqlLocalizer.svg?style=flat-square)](https://www.nuget.org/packages/Localization.SqlLocalizer/)
 ========================
 <strong>Documentation:</strong>
  https://damienbod.wordpress.com
