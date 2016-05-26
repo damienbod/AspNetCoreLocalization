@@ -17,20 +17,6 @@ Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localiz
 
 </ul>
 
-========================
-
-
-# ASP.NET Core 1.0 MVC Localization Example
-
-
-<ul>
-	<li><a href="http://damienbod.com/2015/10/21/asp-net-5-mvc-6-localization/">ASP.NET Core 1.0 MVC Localization</a></li>
-	<li><a href="http://damienbod.com/2015/10/24/using-dataannotations-and-localization-in-asp-net-5-mvc-6/">Using DataAnnotations and Localization in ASP.NET Core 1.0 MVC </a></li>
-	<li><a href="http://damienbod.com/2016/01/29/asp-net-core-1-0-using-sql-localization/">ASP.NET Core 1.0 using SQL Localization</a></li>
-</ul>
-
-
-
 <strong>Basic Usage ASP.NET Core</strong>
 
 Add the N_uGet package to the project.json file
@@ -67,5 +53,19 @@ dotnet ef migrations add Localization --context localizationModelContext
 
 dotnet ef database update Localization --context localizationModelContext
 [/code]
+
+
+========================
+
+
+# ASP.NET Core 1.0 MVC Localization Example
+
+
+<ul>
+	<li><a href="http://damienbod.com/2015/10/21/asp-net-5-mvc-6-localization/">ASP.NET Core 1.0 MVC Localization</a></li>
+	<li><a href="http://damienbod.com/2015/10/24/using-dataannotations-and-localization-in-asp-net-5-mvc-6/">Using DataAnnotations and Localization in ASP.NET Core 1.0 MVC </a></li>
+	<li><a href="http://damienbod.com/2016/01/29/asp-net-core-1-0-using-sql-localization/">ASP.NET Core 1.0 using SQL Localization</a></li>
+</ul>
+
 
 
