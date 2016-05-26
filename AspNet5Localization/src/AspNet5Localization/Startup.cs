@@ -50,8 +50,8 @@ namespace AspNet5Localization
             );
 
             // Requires that LocalizationModelContext is defined
-            // services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
-            services.AddSqlLocalization();
+            services.AddSqlLocalization(options =>  options.UseTypeFullNames = true);
+            //services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             services.AddMvc()
                 .AddViewLocalization()

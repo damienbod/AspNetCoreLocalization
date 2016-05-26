@@ -9,7 +9,7 @@
         "releaseNotes": "Release Notes: Version 1.0.0.0 ",
         "title": "Localization.SqlLocalizer",
         "iconUrl": "http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png",
-        "projectUrl": "https://github.com/damienbod/Angular2LocalizationAspNetCore",
+        "projectUrl": "https://github.com/damienbod/AspNet5Localization",
         "licenseUrl": "",
         "requireLicenseAcceptance": false,
         "repository": {
