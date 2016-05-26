@@ -1,13 +1,10 @@
-ElasticsearchCRUD [![NuGet Status](http://img.shields.io/nuget/v/ElasticsearchCRUD.svg?style=flat-square)](https://www.nuget.org/packages/ElasticsearchCRUD/)
+Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/ElasticsearchCRUD.svg?style=flat-square)](https://www.nuget.org/packages/Localization.SqlLocalizer/)
 ========================
 <strong>Documentation:</strong>
  https://damienbod.wordpress.com
 
-<strong>Code:</strong> 
-https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer
+<a href="https://www.nuget.org/packages/Localization.SqlLocalizer/">NuGet</a> | <a href="https://github.com/damienbod/AspNet5Localization/issues">Issues</a> | <a href="https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer">Code</a>
 
-<strong>NuGet Package:</strong> 
-https://www.nuget.org/packages/ElasticsearchCRUD/
 
 
 ========================
