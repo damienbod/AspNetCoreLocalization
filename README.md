@@ -31,4 +31,41 @@ Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localiz
 
 
 
+<strong>Basic Usage ASP.NET Core</strong>
+
+Add the N_uGet package to the project.json file
+
+[code language="csharp"]
+"dependencies": {
+        "Localization.SqlLocalizer": "1.0.0.0",
+[/code]
+
+Add the DbContext and use the AddSqlLocalization extension method to add the SQL Localization package.
+
+[code language="csharp"]
+public void ConfigureServices(IServiceCollection services)
+{
+	// init database for localization
+	var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
+
+	services.AddDbContext<LocalizationModelContext>(options =>
+		options.UseSqlite(
+			sqlConnectionString,
+			b => b.MigrationsAssembly("Angular2LocalizationAspNetCore")
+		)
+	);
+
+	// Requires that LocalizationModelContext is defined
+	services.AddSqlLocalization(options => options.UseTypeFullNames = true);
+
+[/code]
+
+Create your database
+
+[code language="csharp"]
+dotnet ef migrations add Localization --context localizationModelContext
+
+dotnet ef database update Localization --context localizationModelContext
+[/code]
+
 
