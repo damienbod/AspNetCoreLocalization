@@ -19,7 +19,7 @@ Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localiz
 
 <strong>Basic Usage ASP.NET Core</strong>
 
-Add the N_uGet package to the project.json file
+Add the NuGet package to the project.json file
 
 [code language="csharp"]
 "dependencies": {
