@@ -21,14 +21,14 @@ Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localiz
 
 Add the NuGet package to the project.json file
 
-[code language="csharp"]
+```
 "dependencies": {
         "Localization.SqlLocalizer": "1.0.0.0",
-[/code]
+```
 
 Add the DbContext and use the AddSqlLocalization extension method to add the SQL Localization package.
 
-[code language="csharp"]
+```
 public void ConfigureServices(IServiceCollection services)
 {
 	// init database for localization
@@ -44,22 +44,19 @@ public void ConfigureServices(IServiceCollection services)
 	// Requires that LocalizationModelContext is defined
 	services.AddSqlLocalization(options => options.UseTypeFullNames = true);
 
-[/code]
+```
 
 Create your database
 
-[code language="csharp"]
+```
 dotnet ef migrations add Localization --context localizationModelContext
 
 dotnet ef database update Localization --context localizationModelContext
-[/code]
-
+```
 
 ========================
 
-
 # ASP.NET Core 1.0 MVC Localization Example
-
 
 <ul>
 	<li><a href="http://damienbod.com/2015/10/21/asp-net-5-mvc-6-localization/">ASP.NET Core 1.0 MVC Localization</a></li>
