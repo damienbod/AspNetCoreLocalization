@@ -5,7 +5,17 @@ Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localiz
 
 <a href="https://www.nuget.org/packages/Localization.SqlLocalizer/">NuGet</a> | <a href="https://github.com/damienbod/AspNet5Localization/issues">Issues</a> | <a href="https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer">Code</a>
 
+<strong>Release History</strong>
 
+<em>Version 1.0.0.0</em>
+<ul>
+ 	<li>Initial release</li>
+	<li>Runtime localization updates</li>
+	<li>Cache support, reset cache</li>
+        <li>ASP.NET DI support</li>
+        <li>Supports any Entity Framework Core database</li>
+
+</ul>
 
 ========================
 
