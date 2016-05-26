@@ -1,3 +1,18 @@
+ElasticsearchCRUD [![NuGet Status](http://img.shields.io/nuget/v/ElasticsearchCRUD.svg?style=flat-square)](https://www.nuget.org/packages/ElasticsearchCRUD/)
+========================
+<strong>Documentation:</strong>
+ https://damienbod.wordpress.com
+
+<strong>Code:</strong> 
+https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer
+
+<strong>NuGet Package:</strong> 
+https://www.nuget.org/packages/ElasticsearchCRUD/
+
+
+========================
+
+
 # ASP.NET Core 1.0 MVC Localization Example
 
 
