@@ -9,6 +9,6 @@
         public string Text { get; set; }
 
         public string LocalizationCulture { get; set; }
-        public string ResourceKey { get; internal set; }
+        public string ResourceKey { get; set; }
     }
 }

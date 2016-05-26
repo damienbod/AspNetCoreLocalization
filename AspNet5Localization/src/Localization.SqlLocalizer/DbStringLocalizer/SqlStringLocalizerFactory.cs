@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace Localization.SqlLocalizer.DbStringLocalizer
 {
-    public class SqlStringLocalizerFactory : IStringLocalizerFactory
+    public class SqlStringLocalizerFactory : IStringLocalizerFactory, IStringExtendedLocalizerFactory
     {
         private readonly LocalizationModelContext _context;
         private readonly ConcurrentDictionary<string, IStringLocalizer> _resourceLocalizations = new ConcurrentDictionary<string, IStringLocalizer>();
@@ -78,6 +78,17 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
             var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(baseName + location), baseName + location);
             return _resourceLocalizations.GetOrAdd(baseName + location, sqlStringLocalizer);
+        }
+
+        public void ResetCache()
+        {
+            _resourceLocalizations.Clear();
+        }
+
+        public void ResetCache(Type resourceSource)
+        {
+            IStringLocalizer returnValue;
+            _resourceLocalizations.TryRemove(resourceSource.FullName, out returnValue);
         }
 
         private Dictionary<string, string> GetAllFromDatabaseForResource(string resourceKey)
