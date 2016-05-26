@@ -7,7 +7,13 @@ Documentation: https://damienbod.com/2016/05/26/released-sql-localization-nuget-
 
 <strong>Release History</strong>
 
-<em>Version 1.0.0.0</em>
+<em>Version 1.0.1</em>
+<ul>
+ 	<li>Added Unique constraint for key, culture</li>
+	<li>Fixed type full name cache bug</li>
+</ul>
+
+<em>Version 1.0.0</em>
 <ul>
  	<li>Initial release</li>
 	<li>Runtime localization updates</li>
