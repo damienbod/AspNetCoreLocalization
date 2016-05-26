@@ -56,7 +56,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 }
 
                 sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.FullName), resourceSource.FullName);
-                _resourceLocalizations.GetOrAdd(resourceSource.FullName, sqlStringLocalizer);
+                return _resourceLocalizations.GetOrAdd(resourceSource.FullName, sqlStringLocalizer);
             }
 
 

@@ -52,7 +52,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAdd(new ServiceDescriptor(
                 typeof(IStringLocalizer),
                 typeof(SqlStringLocalizer),
-                ServiceLifetime.Scoped));
+                ServiceLifetime.Singleton));
 
             if (setupAction != null)
             {
