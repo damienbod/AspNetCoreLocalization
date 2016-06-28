@@ -7,6 +7,11 @@ Documentation: https://damienbod.com/2016/05/26/released-sql-localization-nuget-
 
 <strong>Release History</strong>
 
+<em>Version 1.0.2</em>
+<ul>
+ 	<li>Updated to dotnet 1.0.0</li>
+</ul>
+
 <em>Version 1.0.1</em>
 <ul>
  	<li>Added Unique constraint for key, culture</li>
