@@ -1,12 +1,12 @@
 ﻿{
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "SQL Localizer for ASP.NET Core, dotnet",
     "authors": [ "damienbod" ],
     "packOptions": {
         "summary": "Localization SQL Localizer",
         "tags": [ "Localization", "SqlLocalizer", "SQlite", "Postgres", "MS SQLServer" ],
         "owners": [ "damienbod" ],
-        "releaseNotes": "Release Notes: Version 1.0.1",        
+        "releaseNotes": "Release Notes: Version 1.0.2",        
         "title": "Localization.SqlLocalizer",
         "iconUrl": "http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png",
         "projectUrl": "https://github.com/damienbod/AspNet5Localization",
@@ -19,18 +19,18 @@
     },
     "dependencies": {
         "Microsoft.NETCore.App": {
-            "version": "1.0.0-rc2-3002702",
+            "version": "1.0.0",
             "type": "platform"
         },
 
-        "Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
-        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
-        "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
-        "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
-        "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
-        "Microsoft.Extensions.Localization": "1.0.0-rc2-final",
-        "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
-        "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final"
+        "Microsoft.EntityFrameworkCore": "1.0.0",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+        "Microsoft.Extensions.Configuration.Json": "1.0.0",
+        "Microsoft.Extensions.Logging": "1.0.0",
+        "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
+        "Microsoft.Extensions.Localization": "1.0.0",
+        "Microsoft.Extensions.Logging.Console": "1.0.0",
+        "Microsoft.Extensions.Logging.Debug": "1.0.0"
     },
 
     "frameworks": {
