@@ -1,12 +1,12 @@
 ﻿{
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "SQL Localizer for ASP.NET Core, dotnet",
     "authors": [ "damienbod" ],
     "packOptions": {
         "summary": "Localization SQL Localizer",
         "tags": [ "Localization", "SqlLocalizer", "SQlite", "Postgres", "MS SQLServer" ],
         "owners": [ "damienbod" ],
-        "releaseNotes": "Release Notes: Version 1.0.2",        
+        "releaseNotes": "Release Notes: Version 1.0.3",        
         "title": "Localization.SqlLocalizer",
         "iconUrl": "http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png",
         "projectUrl": "https://github.com/damienbod/AspNet5Localization",

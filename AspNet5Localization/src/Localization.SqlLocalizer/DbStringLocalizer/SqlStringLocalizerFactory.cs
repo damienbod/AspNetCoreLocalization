@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 
@@ -94,6 +96,52 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         private Dictionary<string, string> GetAllFromDatabaseForResource(string resourceKey)
         {
             return _context.LocalizationRecords.Where(data => data.ResourceKey == resourceKey).ToDictionary(kvp => (kvp.Key + "." + kvp.LocalizationCulture), kvp => kvp.Text);
+        }
+
+        public IList GetImportHistory()
+        {
+            return _context.ImportHistoryDbSet.ToList();
+        }
+
+        public IList GetExportHistory()
+        {
+            return _context.ExportHistoryDbSet.ToList();
+        }
+
+        public IList GetLocalizationData(string reason = "export")
+        {
+            _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
+            _context.SaveChanges();
+
+            return  _context.LocalizationRecords.ToList();
+        }
+
+        public IList GetLocalizationData(DateTime from, string culture = null, string reason = "export")
+        {
+            _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
+            _context.SaveChanges();
+
+            if (culture != null)
+            {
+                return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from && item.LocalizationCulture == culture).ToList();
+            }
+
+            return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from).ToList();
+        }
+
+ 
+        public void UpdatetLocalizationData(List<LocalizationRecord> data, string information)
+        {
+            _context.UpdateRange(data);
+            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
+            _context.SaveChanges();
+        }
+
+        public void AddNewLocalizationData(List<LocalizationRecord> data, string information)
+        {
+            _context.AddRange(data);
+            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
+            _context.SaveChanges();
         }
     }
 }

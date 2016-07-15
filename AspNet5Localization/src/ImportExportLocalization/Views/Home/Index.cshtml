@@ -1,0 +1,84 @@
+﻿
+
+<fieldset>
+    <legend style="padding-top: 10px; padding-bottom: 10px;">Download existing translations</legend>
+
+    <a href="http://localhost:6062/api/ImportExport/localizedData.csv" target="_blank">localizedData.csv</a>
+
+</fieldset>
+
+
+
+<hr />
+
+<div>
+    <form enctype="multipart/form-data" method="post" action="http://localhost:6062/api/ImportExport/update" id="ajaxUploadForm" novalidate="novalidate">
+        <fieldset>
+            <legend style="padding-top: 10px; padding-bottom: 10px;">Upload existing CSV data</legend>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <label>Upload Information</label>
+                </div>
+                <div class="col-xs-7">
+                    <textarea rows="2" placeholder="Information" class="form-control" name="information" id="information"></textarea>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <label>Upload CSV data</label>
+                </div>
+                <div class="col-xs-7">
+                    <input type="file" name="file" id="fileInput">
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <input type="submit" value="Upload Updated Data" id="ajaxUploadButton" class="btn">
+                </div>
+                <div class="col-xs-7">
+
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<div>
+    <form enctype="multipart/form-data" method="post" action="http://localhost:6062/api/ImportExport/new" id="ajaxUploadForm" novalidate="novalidate">
+        <fieldset>
+            <legend style="padding-top: 10px; padding-bottom: 10px;">Upload new CSV data</legend>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <label>Upload Information</label>
+                </div>
+                <div class="col-xs-7">
+                    <textarea rows="2" placeholder="Information" class="form-control" name="information" id="information"></textarea>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <label>Upload CSV data</label>
+                </div>
+                <div class="col-xs-7">
+                    <input type="file" name="file" id="fileInput">
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <input type="submit" value="Upload New Data" id="ajaxUploadButton" class="btn">
+                </div>
+                <div class="col-xs-7">
+
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
