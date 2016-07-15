@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Localization.SqlLocalizer.DbStringLocalizer;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +36,6 @@ namespace ImportExportLocalization.Controllers
         public IActionResult ImportCsvFile(CsvImportDescription csvImportDescription)
         {
             // TODO validate that data is a csv file.
-            var names = new List<string>();
             var contentTypes = new List<string>();
 
             if (ModelState.IsValid)
@@ -46,22 +47,49 @@ namespace ImportExportLocalization.Controllers
                         var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                         contentTypes.Add(file.ContentType);
 
-                        names.Add(fileName);
-
                         var inputStream = file.OpenReadStream();
-                        var serializer = new JsonSerializer();
-
-                        using (var sr = new StreamReader(inputStream))
-                        using (var jsonTextReader = new JsonTextReader(sr))
-                        {
-                            var data =  serializer.Deserialize(jsonTextReader) as IList<LocalizationRecord>;
-                            // TODO save the data to the database
-                        }
+                        var items = readStream(file.OpenReadStream());
+                        _stringExtendedLocalizerFactory.ImportLocalizationData(items, csvImportDescription.Information);
                     }
                 }
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private List<LocalizationRecord> readStream(Stream stream)
+        {
+            bool skipFirstLine = true;
+            string csvDelimiter = ";";
+
+            List<LocalizationRecord> list = new List<LocalizationRecord>();
+            var reader = new StreamReader(stream);
+
+
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(csvDelimiter.ToCharArray());
+                if (skipFirstLine)
+                {
+                    skipFirstLine = false;
+                }
+                else
+                {
+                    var itemTypeInGeneric = list.GetType().GetTypeInfo().GenericTypeArguments[0];
+                    var item = new LocalizationRecord();
+                    var properties = item.GetType().GetProperties();
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        properties[i].SetValue(item, Convert.ChangeType(values[i], properties[i].PropertyType), null);
+                    }
+
+                    list.Add(item);
+                }
+
+            }
+
+            return list;
         }
     }
 }

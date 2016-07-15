@@ -15,8 +15,6 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         IList GetExportHistory();
 
-        void ImportLocalizationData();
-
         IList GetLocalizationData();
 
         IList GetLocalizationData(DateTime from, string culture = null);

@@ -108,11 +108,6 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             return _context.ExportHistoryDbSet.ToList();
         }
 
-        public void ImportLocalizationData()
-        {
-            throw new NotImplementedException();
-        }
-
         public IList GetLocalizationData()
         {
             return  _context.LocalizationRecords.ToList();
