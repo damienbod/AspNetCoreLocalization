@@ -150,7 +150,8 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public void ImportLocalizationData(List<LocalizationRecord> data, string information)
         {
-            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Exported = DateTime.UtcNow });
+            // TODO added imported data
+            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
             _context.SaveChanges();
         }
     }

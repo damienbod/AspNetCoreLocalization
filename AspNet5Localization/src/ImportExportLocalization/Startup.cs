@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 
 namespace ImportExportLocalization
@@ -38,7 +39,7 @@ namespace ImportExportLocalization
             services.AddDbContext<LocalizationModelContext>(options =>
                 options.UseSqlite(
                     sqlConnectionString,
-                    b => b.MigrationsAssembly("AspNet5Localization")
+                    b => b.MigrationsAssembly("ImportExportLocalization")
                 )
             );
 
@@ -80,6 +81,9 @@ namespace ImportExportLocalization
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
 
             if (env.IsDevelopment())
             {
