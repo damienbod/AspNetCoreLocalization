@@ -15,13 +15,13 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         IList GetExportHistory();
 
-        IList GetLocalizationData();
+        IList GetLocalizationData(string reason = "export");
 
-        IList GetLocalizationData(DateTime from, string culture = null);
+        IList GetLocalizationData(DateTime from, string culture = null, string reason = "export");
 
-        IList GetLocalizationDataSinceLastImport(bool updateExportHistory = false, string reason = "default export");
+        void UpdatetLocalizationData(List<LocalizationRecord> data, string information);
 
-        void ImportLocalizationData(List<LocalizationRecord> data, string information);
+        void AddNewLocalizationData(List<LocalizationRecord> data, string information);
 
     }
 }

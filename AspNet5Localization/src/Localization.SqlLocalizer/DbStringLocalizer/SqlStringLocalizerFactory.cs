@@ -108,14 +108,20 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             return _context.ExportHistoryDbSet.ToList();
         }
 
-        public IList GetLocalizationData()
+        public IList GetLocalizationData(string reason = "export")
         {
+            _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
+            _context.SaveChanges();
+
             return  _context.LocalizationRecords.ToList();
         }
 
-        public IList GetLocalizationData(DateTime from, string culture = null)
+        public IList GetLocalizationData(DateTime from, string culture = null, string reason = "export")
         {
-            if(culture != null)
+            _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
+            _context.SaveChanges();
+
+            if (culture != null)
             {
                 return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from && item.LocalizationCulture == culture).ToList();
             }
@@ -123,29 +129,17 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from).ToList();
         }
 
-        public IList GetLocalizationDataSinceLastImport(bool updateExportHistory = false, string reason = "default export")
+ 
+        public void UpdatetLocalizationData(List<LocalizationRecord> data, string information)
         {
-            DateTime from = DateTime.UtcNow.AddYears(-100);
-
-            var historyItem =  _context.ImportHistoryDbSet.OrderByDescending(item => item.Id).FirstOrDefault();
-
-            if (historyItem != null)
-            {
-                from = historyItem.Imported;
-            }
-
-            if (updateExportHistory)
-            {
-                _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
-                _context.SaveChanges();
-            }
-
-            return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from).ToList();
+            _context.UpdateRange(data);
+            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
+            _context.SaveChanges();
         }
 
-        public void ImportLocalizationData(List<LocalizationRecord> data, string information)
+        public void AddNewLocalizationData(List<LocalizationRecord> data, string information)
         {
-            // TODO added imported data
+            _context.AddRange(data);
             _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
             _context.SaveChanges();
         }

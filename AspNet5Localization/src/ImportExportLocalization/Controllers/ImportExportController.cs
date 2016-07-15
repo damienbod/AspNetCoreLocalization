@@ -29,11 +29,10 @@ namespace ImportExportLocalization.Controllers
             return Ok(_stringExtendedLocalizerFactory.GetLocalizationData());
         }
 
-
-        [Route("files")]
+        [Route("update")]
         [HttpPost]
         [ServiceFilter(typeof(ValidateMimeMultipartContentFilter))]
-        public IActionResult ImportCsvFile(CsvImportDescription csvImportDescription)
+        public IActionResult ImportCsvFileForExistingData(CsvImportDescription csvImportDescription)
         {
             // TODO validate that data is a csv file.
             var contentTypes = new List<string>();
@@ -49,7 +48,34 @@ namespace ImportExportLocalization.Controllers
 
                         var inputStream = file.OpenReadStream();
                         var items = readStream(file.OpenReadStream());
-                        _stringExtendedLocalizerFactory.ImportLocalizationData(items, csvImportDescription.Information);
+                        _stringExtendedLocalizerFactory.UpdatetLocalizationData(items, csvImportDescription.Information);
+                    }
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Route("new")]
+        [HttpPost]
+        [ServiceFilter(typeof(ValidateMimeMultipartContentFilter))]
+        public IActionResult ImportCsvFileForNewData(CsvImportDescription csvImportDescription)
+        {
+            // TODO validate that data is a csv file.
+            var contentTypes = new List<string>();
+
+            if (ModelState.IsValid)
+            {
+                foreach (var file in csvImportDescription.File)
+                {
+                    if (file.Length > 0)
+                    {
+                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        contentTypes.Add(file.ContentType);
+
+                        var inputStream = file.OpenReadStream();
+                        var items = readStream(file.OpenReadStream());
+                        _stringExtendedLocalizerFactory.AddNewLocalizationData(items, csvImportDescription.Information);
                     }
                 }
             }
