@@ -72,6 +72,8 @@ namespace ImportExportLocalization
                 options.OutputFormatters.Add(new CsvOutputFormatter(csvFormatterOptions));
                 options.FormatterMappings.SetMediaTypeMappingForFormat("csv", MediaTypeHeaderValue.Parse("text/csv"));
             });
+
+            services.AddScoped<ValidateMimeMultipartContentFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
