@@ -1,4 +1,6 @@
-﻿namespace Localization.SqlLocalizer.DbStringLocalizer
+﻿using System;
+
+namespace Localization.SqlLocalizer.DbStringLocalizer
 {
     public class LocalizationRecord
     {
@@ -11,4 +13,8 @@
         public string LocalizationCulture { get; set; }
         public string ResourceKey { get; set; }
     }
+
+
+
+   
 }

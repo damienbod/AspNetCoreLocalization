@@ -12,15 +12,21 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         { }
         
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
-        
+        public DbSet<ExportHistory> ExportHistoryDbSet { get; set; }
+        public DbSet<ImportHistory> ImportHistoryDbSet { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<LocalizationRecord>().HasKey(m => m.Id);
-                
+            builder.Entity<LocalizationRecord>().HasKey(m => m.Id);               
             builder.Entity<LocalizationRecord>().HasAlternateKey(c => new { c.Key, c.LocalizationCulture });
 
             // shadow properties
             builder.Entity<LocalizationRecord>().Property<DateTime>("UpdatedTimestamp");
+
+            builder.Entity<ExportHistory>().HasKey(m => m.Id);
+
+            builder.Entity<ImportHistory>().HasKey(m => m.Id);
 
             base.OnModelCreating(builder);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,6 +95,36 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         private Dictionary<string, string> GetAllFromDatabaseForResource(string resourceKey)
         {
             return _context.LocalizationRecords.Where(data => data.ResourceKey == resourceKey).ToDictionary(kvp => (kvp.Key + "." + kvp.LocalizationCulture), kvp => kvp.Text);
+        }
+
+        public IList GetImportHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList GetExportHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ImportLocalizationData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList GetAllLocalizationData(bool updateExportHistory = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList GetNewLocalizationDataSinceLastImport(bool updateExportHistory = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList GetLocalizationData(DateTime from, string culture = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }
