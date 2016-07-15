@@ -1,3 +1,38 @@
-﻿
+﻿<div>
 
-Import Export page
+
+    <form enctype="multipart/form-data" method="post" action="http://localhost:6062/api/ImportExport/files" id="ajaxUploadForm" novalidate="novalidate">
+
+        <fieldset>
+            <legend style="padding-top: 10px; padding-bottom: 10px;">Uploaded CSV data</legend>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <label>Upload Information</label>
+                </div>
+                <div class="col-xs-7">
+                    <textarea rows="2" placeholder="Information" class="form-control" name="information" id="information"></textarea>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <label>Upload CSV data</label>
+                </div>
+                <div class="col-xs-7">
+                    <input type="file" name="file" id="fileInput">
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="padding: 10px;">
+                <div class="col-xs-4">
+                    <input type="submit" value="Upload" id="ajaxUploadButton" class="btn">
+                </div>
+                <div class="col-xs-7">
+
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
