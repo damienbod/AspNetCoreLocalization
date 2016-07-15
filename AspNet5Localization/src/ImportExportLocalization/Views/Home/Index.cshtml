@@ -1,4 +1,17 @@
-﻿<div>
+﻿
+
+<fieldset>
+    <legend style="padding-top: 10px; padding-bottom: 10px;">Download existing translations</legend>
+
+    <a href="http://localhost:6062/api/ImportExport/localizedData.csv" target="_blank">localizedData.csv</a>
+
+</fieldset>
+
+
+
+<hr />
+
+<div>
     <form enctype="multipart/form-data" method="post" action="http://localhost:6062/api/ImportExport/update" id="ajaxUploadForm" novalidate="novalidate">
         <fieldset>
             <legend style="padding-top: 10px; padding-bottom: 10px;">Upload existing CSV data</legend>
@@ -35,9 +48,7 @@
 </div>
 
 <div>
-
     <form enctype="multipart/form-data" method="post" action="http://localhost:6062/api/ImportExport/new" id="ajaxUploadForm" novalidate="novalidate">
-
         <fieldset>
             <legend style="padding-top: 10px; padding-bottom: 10px;">Upload new CSV data</legend>
 
