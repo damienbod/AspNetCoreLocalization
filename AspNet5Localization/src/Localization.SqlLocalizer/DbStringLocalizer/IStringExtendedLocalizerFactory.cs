@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Extensions.Localization;
 
 namespace Localization.SqlLocalizer.DbStringLocalizer
@@ -16,10 +17,13 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         void ImportLocalizationData();
 
-        IList GetAllLocalizationData(bool updateExportHistory = false);
-
-        IList GetNewLocalizationDataSinceLastImport(bool updateExportHistory = false);
+        IList GetLocalizationData();
 
         IList GetLocalizationData(DateTime from, string culture = null);
+
+        IList GetLocalizationDataSinceLastImport(bool updateExportHistory = false, string reason = "default export");
+
+        void ImportLocalizationData(List<LocalizationRecord> data, string information);
+
     }
 }

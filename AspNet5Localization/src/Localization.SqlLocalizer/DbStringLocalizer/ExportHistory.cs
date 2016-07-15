@@ -11,6 +11,6 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public DateTime Exported { get; set; }
 
-        public string Description { get; set; }
+        public string Reason { get; set; }
     }
 }

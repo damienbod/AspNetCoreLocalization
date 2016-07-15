@@ -13,6 +13,6 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public DateTime Imported { get; set; }
 
-        public string Description { get; set; }
+        public string Information { get; set; }
     }
 }
