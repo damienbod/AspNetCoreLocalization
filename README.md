@@ -7,6 +7,12 @@ Documentation: https://damienbod.com/2016/05/26/released-sql-localization-nuget-
 
 <strong>Release History</strong>
 
+<em>Version 1.0.4</em>
+<ul>
+ 	<li>Updated to .NET Core 1.1</li>
+	<li>changed the constraint to included the resourceKey for new records</li>
+</ul>
+
 <em>Version 1.0.3</em>
 <ul>
  	<li>Adding interfaces to support csv, json, import export of data</li>
