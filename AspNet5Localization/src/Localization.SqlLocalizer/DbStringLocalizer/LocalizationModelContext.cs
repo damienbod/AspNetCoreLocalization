@@ -19,7 +19,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<LocalizationRecord>().HasKey(m => m.Id);               
-            builder.Entity<LocalizationRecord>().HasAlternateKey(c => new { c.Key, c.LocalizationCulture });
+            builder.Entity<LocalizationRecord>().HasAlternateKey(c => new { c.Key, c.LocalizationCulture, c.ResourceKey });
 
             // shadow properties
             builder.Entity<LocalizationRecord>().Property<DateTime>("UpdatedTimestamp");
