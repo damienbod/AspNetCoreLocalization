@@ -8,13 +8,13 @@ using Localization.SqlLocalizer.DbStringLocalizer;
 namespace ImportExportLocalization.Migrations
 {
     [DbContext(typeof(LocalizationModelContext))]
-    [Migration("20160715174350_LocalizationMigrations")]
+    [Migration("20161126111026_LocalizationMigrations")]
     partial class LocalizationMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
+                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752");
 
             modelBuilder.Entity("Localization.SqlLocalizer.DbStringLocalizer.ExportHistory", b =>
                 {
@@ -55,7 +55,8 @@ namespace ImportExportLocalization.Migrations
                     b.Property<string>("LocalizationCulture")
                         .IsRequired();
 
-                    b.Property<string>("ResourceKey");
+                    b.Property<string>("ResourceKey")
+                        .IsRequired();
 
                     b.Property<string>("Text");
 
@@ -63,7 +64,7 @@ namespace ImportExportLocalization.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("Key", "LocalizationCulture");
+                    b.HasAlternateKey("Key", "LocalizationCulture", "ResourceKey");
 
                     b.ToTable("LocalizationRecords");
                 });

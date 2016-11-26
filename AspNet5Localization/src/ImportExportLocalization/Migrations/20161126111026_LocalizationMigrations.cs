@@ -13,7 +13,7 @@ namespace ImportExportLocalization.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Exported = table.Column<DateTime>(nullable: false),
                     Reason = table.Column<string>(nullable: true)
                 },
@@ -27,7 +27,7 @@ namespace ImportExportLocalization.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Imported = table.Column<DateTime>(nullable: false),
                     Information = table.Column<string>(nullable: true)
                 },
@@ -41,17 +41,17 @@ namespace ImportExportLocalization.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Key = table.Column<string>(nullable: false),
                     LocalizationCulture = table.Column<string>(nullable: false),
-                    ResourceKey = table.Column<string>(nullable: true),
+                    ResourceKey = table.Column<string>(nullable: false),
                     Text = table.Column<string>(nullable: true),
                     UpdatedTimestamp = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LocalizationRecords", x => x.Id);
-                    table.UniqueConstraint("AK_LocalizationRecords_Key_LocalizationCulture", x => new { x.Key, x.LocalizationCulture });
+                    table.UniqueConstraint("AK_LocalizationRecords_Key_LocalizationCulture_ResourceKey", x => new { x.Key, x.LocalizationCulture, x.ResourceKey });
                 });
         }
 
