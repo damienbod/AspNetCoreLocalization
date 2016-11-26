@@ -1,4 +1,8 @@
 {
+    "buildOptions": {
+        "emitEntryPoint": true,
+        "preserveCompilationContext": true
+    },
     "dependencies": {
         "Microsoft.NETCore.App": {
             "version": "1.1.0",
@@ -42,17 +46,38 @@
             "type": "build"
         },
         "BundlerMinifier.Core": "2.2.301",
-
-
-
         "Localization.SqlLocalizer": "1.0.4",
         "Microsoft.EntityFrameworkCore": "1.1.0",
         "Microsoft.EntityFrameworkCore.Sqlite": "1.1.0",
         "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.0",
-
         "WebApiContrib.Core.Formatter.Csv": "1.0.1"
     },
-
+    "frameworks": {
+        "netcoreapp1.1": {
+            "imports": [
+                "dotnet5.6",
+                "portable-net45+win8"
+            ]
+        }
+    },
+    "publishOptions": {
+        "include": [
+            "wwwroot",
+            "Views",
+            "Areas/**/Views",
+            "appsettings.json",
+            "web.config"
+        ]
+    },
+    "runtimeOptions": {
+        "configProperties": {
+            "System.GC.Server": true
+        }
+    },
+    "scripts": {
+        "prepublish": [ "bower install", "dotnet bundle" ],
+        "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+    },
     "tools": {
         "BundlerMinifier.Core": "2.2.301",
         "Microsoft.AspNetCore.Razor.Tools": "1.1.0-preview4-final",
@@ -65,40 +90,5 @@
                 "portable-net45+win8"
             ]
         }
-    },
-
-    "frameworks": {
-        "netcoreapp1.1": {
-            "imports": [
-                "dotnet5.6",
-                "portable-net45+win8"
-            ]
-        }
-    },
-
-    "buildOptions": {
-        "emitEntryPoint": true,
-        "preserveCompilationContext": true
-    },
-
-    "runtimeOptions": {
-        "configProperties": {
-            "System.GC.Server": true
-        }
-    },
-
-    "publishOptions": {
-        "include": [
-            "wwwroot",
-            "Views",
-            "Areas/**/Views",
-            "appsettings.json",
-            "web.config"
-        ]
-    },
-
-    "scripts": {
-        "prepublish": [ "bower install", "dotnet bundle" ],
-        "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
     }
 }

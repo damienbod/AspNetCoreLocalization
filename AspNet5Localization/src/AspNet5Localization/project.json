@@ -1,4 +1,4 @@
-﻿{
+{
     "userSecretsId": "aspnet-WebApp_Auth-96d521e3-30ac-4a8f-967f-abc243174dce",
 
     "dependencies": {
@@ -44,9 +44,6 @@
             "type": "build"
         },
         "BundlerMinifier.Core": "2.2.301",
-
-
-
         "Localization.SqlLocalizer": "1.0.4",
         "Microsoft.EntityFrameworkCore": "1.1.0",
         "Microsoft.EntityFrameworkCore.Sqlite": "1.1.0",
