@@ -7,6 +7,11 @@ Documentation: https://damienbod.com/2016/05/26/released-sql-localization-nuget-
 
 <strong>Release History</strong>
 
+<em>Version 1.0.5</em>
+<ul>
+ 	<li>bugfix context System.InvalidOperationException import, export</li>
+</ul>
+
 <em>Version 1.0.4</em>
 <ul>
  	<li>Updated to .NET Core 1.1</li>
