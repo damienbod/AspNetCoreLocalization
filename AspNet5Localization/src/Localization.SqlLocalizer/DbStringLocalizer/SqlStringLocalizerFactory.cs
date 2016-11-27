@@ -12,7 +12,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     public class SqlStringLocalizerFactory : IStringLocalizerFactory, IStringExtendedLocalizerFactory
     {
         private readonly LocalizationModelContext _context;
-        private readonly ConcurrentDictionary<string, IStringLocalizer> _resourceLocalizations = new ConcurrentDictionary<string, IStringLocalizer>();
+        private static readonly ConcurrentDictionary<string, IStringLocalizer> _resourceLocalizations = new ConcurrentDictionary<string, IStringLocalizer>();
         private readonly IOptions<SqlLocalizationOptions> _options;
         private const string Global = "global";
 
