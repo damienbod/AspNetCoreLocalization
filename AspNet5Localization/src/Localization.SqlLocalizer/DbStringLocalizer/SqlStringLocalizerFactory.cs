@@ -36,11 +36,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public IStringLocalizer Create(Type resourceSource)
         {
-            var returnOnlyKeyIfNotFound = true;
-            if (_options.Value.ReturnOnlyKeyIfNotFound)
-            {
-                returnOnlyKeyIfNotFound = _options.Value.ReturnOnlyKeyIfNotFound;
-            }
+            var returnOnlyKeyIfNotFound = _options.Value.ReturnOnlyKeyIfNotFound;
 
             SqlStringLocalizer sqlStringLocalizer;
 
@@ -55,8 +51,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 return _resourceLocalizations.GetOrAdd(Global, sqlStringLocalizer);
                 
             }
-
-            if (_options.Value.UseTypeFullNames)
+            else if (_options.Value.UseTypeFullNames)
             {
                 if (_resourceLocalizations.Keys.Contains(resourceSource.FullName))
                 {
@@ -66,7 +61,6 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.FullName), resourceSource.FullName, returnOnlyKeyIfNotFound);
                 return _resourceLocalizations.GetOrAdd(resourceSource.FullName, sqlStringLocalizer);
             }
-
 
             if (_resourceLocalizations.Keys.Contains(resourceSource.Name))
             {
