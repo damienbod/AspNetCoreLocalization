@@ -17,7 +17,7 @@ Example:
 <pre>
 var useTypeFullNames = true;
 var useOnlyPropertyNames = false;
-var returnOnlyKeyIfNotFound = false;
+var returnOnlyKeyIfNotFound = true;
 
 services.AddSqlLocalization(options => options.UseSettings(
   useTypeFullNames, 
