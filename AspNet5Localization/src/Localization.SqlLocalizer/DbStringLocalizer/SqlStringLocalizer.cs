@@ -10,10 +10,13 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         private readonly Dictionary<string, string> _localizations;
 
         private readonly string _resourceKey;
-        public SqlStringLocalizer(Dictionary<string, string> localizations, string resourceKey)
+        private bool _returnKeyOnlyIfNotFound;
+
+        public SqlStringLocalizer(Dictionary<string, string> localizations, string resourceKey, bool returnKeyOnlyIfNotFound)
         {
             _localizations = localizations;
             _resourceKey = resourceKey;
+            _returnKeyOnlyIfNotFound = returnKeyOnlyIfNotFound;
         }
         public LocalizedString this[string name]
         {
@@ -60,6 +63,11 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             }
             else
             {
+                if(_returnKeyOnlyIfNotFound)
+                {
+                    return key;
+                }
+
                 return _resourceKey + "." + computedKey;
             }
         }
