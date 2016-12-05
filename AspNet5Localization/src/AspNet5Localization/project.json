@@ -40,7 +40,7 @@
             "type": "build"
         },
         "BundlerMinifier.Core": "2.2.301",
-        "Localization.SqlLocalizer": "1.0.4",
+        "Localization.SqlLocalizer": "1.0.6",
         "Microsoft.EntityFrameworkCore": "1.1.0",
         "Microsoft.EntityFrameworkCore.Sqlite": "1.1.0",
         "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.0",
