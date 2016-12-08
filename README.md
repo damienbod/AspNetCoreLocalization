@@ -5,63 +5,6 @@ Documentation: http://localizationsqllocalizer.readthedocs.io/en/latest/
 
 <a href="https://www.nuget.org/packages/Localization.SqlLocalizer/">NuGet</a> | <a href="https://github.com/damienbod/AspNet5Localization/issues">Issues</a> | <a href="https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer">Code</a>
 
-<strong>Release History</strong>
-
-<em>Version 1.0.6</em>
-<ul>
-    <li>return default key if localization cannot be found support</li>
-</ul>
-
-Example:
-
-<pre>
-var useTypeFullNames = true;
-var useOnlyPropertyNames = false;
-var returnOnlyKeyIfNotFound = true;
-
-services.AddSqlLocalization(options => options.UseSettings(
-  useTypeFullNames, 
-  useOnlyPropertyNames, 
-  returnOnlyKeyIfNotFound
-));
-</pre>
-
-<em>Version 1.0.5</em>
-<ul>
-    <li>bugfix context System.InvalidOperationException import, export</li>
-</ul>
-
-<em>Version 1.0.4</em>
-<ul>
-    <li>Updated to .NET Core 1.1</li>
-    <li>changed the constraint to included the resourceKey for new records</li>
-</ul>
-
-<em>Version 1.0.3</em>
-<ul>
-    <li>Adding interfaces to support csv, json, import export of data</li>
-</ul>
-
-<em>Version 1.0.2</em>
-<ul>
-    <li>Updated to dotnet 1.0.0</li>
-</ul>
-
-<em>Version 1.0.1</em>
-<ul>
-    <li>Added Unique constraint for key, culture</li>
-    <li>Fixed type full name cache bug</li>
-</ul>
-
-<em>Version 1.0.0</em>
-<ul>
-    <li>Initial release</li>
-    <li>Runtime localization updates</li>
-    <li>Cache support, reset cache</li>
-        <li>ASP.NET DI support</li>
-        <li>Supports any Entity Framework Core database</li>
-
-</ul>
 
 <strong>Basic Usage ASP.NET Core</strong>
 
