@@ -1,6 +1,6 @@
 Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localization.SqlLocalizer.svg?style=flat-square)](https://www.nuget.org/packages/Localization.SqlLocalizer/)
 ========================
-Documentation: https://damienbod.com/2016/05/26/released-sql-localization-nuget-package-for-asp-net-core-dotnet/
+Documentation: http://localizationsqllocalizer.readthedocs.io/en/latest/
 
 
 <a href="https://www.nuget.org/packages/Localization.SqlLocalizer/">NuGet</a> | <a href="https://github.com/damienbod/AspNet5Localization/issues">Issues</a> | <a href="https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer">Code</a>
