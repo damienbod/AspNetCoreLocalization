@@ -50,7 +50,7 @@ namespace AspNet5Localization
             	)
             );
 
-            var useTypeFullNames = true;
+            var useTypeFullNames = false;
             var useOnlyPropertyNames = false;
             var returnOnlyKeyIfNotFound = false;
 
