@@ -43,7 +43,8 @@ namespace AspNet5Localization
             // init database for localization
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
-            services.AddSingleton(new SqlContextOptions { SqlSchemaName = "" });
+            // if you want to add a schema to the localization sql database
+            // services.AddLocalizationSqlSchema("translations");
             services.AddDbContext<LocalizationModelContext>(options =>
             	options.UseSqlite(
             		sqlConnectionString,

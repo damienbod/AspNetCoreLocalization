@@ -2,6 +2,7 @@
 using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Localization.SqlLocalizer.DbStringLocalizer
 {
@@ -10,9 +11,9 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     {
         private string _schema;
 
-        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options, SqlContextOptions localizationOptions) : base(options)
+        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options, IOptions<SqlContextOptions> contextOptions) : base(options)
         {
-            _schema = localizationOptions.SqlSchemaName;
+            _schema = contextOptions.Value.SqlSchemaName;
         }
 
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }

@@ -60,5 +60,22 @@ namespace Microsoft.Extensions.DependencyInjection
             }
             return services;
         }
+
+        public static IServiceCollection AddLocalizationSqlSchema(
+            this IServiceCollection services,
+            string schema)
+        {
+            // Adds services required for using options.
+            services.AddOptions();
+
+            // Registers the following lambda used to configure options.
+            services.Configure<SqlContextOptions>(myOptions =>
+            {
+                myOptions.SqlSchemaName = schema;
+            });
+
+            return services;
+        }
+
     }
 }
