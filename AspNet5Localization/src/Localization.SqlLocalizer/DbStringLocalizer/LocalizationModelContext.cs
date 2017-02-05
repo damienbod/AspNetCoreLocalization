@@ -10,10 +10,9 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     {
         private string _schema;
 
-        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options, SqlLocalizationOptions localizationOptions) : base(options)
+        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options, SqlContextOptions localizationOptions) : base(options)
         {
             _schema = localizationOptions.SqlSchemaName;
-
         }
 
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
