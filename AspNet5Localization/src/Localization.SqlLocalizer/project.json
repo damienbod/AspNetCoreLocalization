@@ -1,4 +1,4 @@
-﻿{
+{
     "version": "1.0.6",
     "description": "SQL Localizer for ASP.NET Core, dotnet",
     "authors": [ "damienbod" ],
@@ -22,7 +22,6 @@
             "version": "1.1.0",
             "type": "platform"
         },
-
         "Microsoft.EntityFrameworkCore": "1.1.0",
         "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0",
         "Microsoft.Extensions.Configuration.Json": "1.1.0",
@@ -30,7 +29,8 @@
         "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
         "Microsoft.Extensions.Localization": "1.1.0",
         "Microsoft.Extensions.Logging.Console": "1.1.0",
-        "Microsoft.Extensions.Logging.Debug": "1.1.0"
+        "Microsoft.Extensions.Logging.Debug": "1.1.0",
+        "Microsoft.EntityFrameworkCore.Relational": "1.1.0"
     },
 
     "frameworks": {

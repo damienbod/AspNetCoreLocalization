@@ -2,15 +2,20 @@
 using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Localization.SqlLocalizer.DbStringLocalizer
 {
     // >dotnet ef migrations add LocalizationMigration
     public class LocalizationModelContext : DbContext
     {
-        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options) :base(options)
-        { }
-        
+        private string _schema;
+
+        public LocalizationModelContext(DbContextOptions<LocalizationModelContext> options, IOptions<SqlContextOptions> contextOptions) : base(options)
+        {
+            _schema = contextOptions.Value.SqlSchemaName;
+        }
+
         public DbSet<LocalizationRecord> LocalizationRecords { get; set; }
         public DbSet<ExportHistory> ExportHistoryDbSet { get; set; }
         public DbSet<ImportHistory> ImportHistoryDbSet { get; set; }
@@ -18,7 +23,9 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<LocalizationRecord>().HasKey(m => m.Id);               
+            if (!string.IsNullOrEmpty(_schema))
+                builder.HasDefaultSchema(_schema);
+            builder.Entity<LocalizationRecord>().HasKey(m => m.Id);
             builder.Entity<LocalizationRecord>().HasAlternateKey(c => new { c.Key, c.LocalizationCulture, c.ResourceKey });
 
             // shadow properties
