@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
 using Localization.SqlLocalizer.DbStringLocalizer;
-using Localization.SqlLocalizer;
 
 namespace AspNet5Localization
 {
@@ -23,12 +22,6 @@ namespace AspNet5Localization
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-            }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -48,7 +41,7 @@ namespace AspNet5Localization
             services.AddDbContext<LocalizationModelContext>(options =>
             	options.UseSqlite(
             		sqlConnectionString,
-                    b => b.MigrationsAssembly("AspNet5Localization")
+                    b => b.MigrationsAssembly("AspNetCoreLocalization")
                 )
             );
 
