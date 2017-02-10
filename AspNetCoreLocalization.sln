@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CD7C6D49-9795-4477-BDE1-AF26A250A493}"
 EndProject
@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet5Localization", "src\AspNet5Localization\AspNet5Localization.xproj", "{A01AD3B8-3568-46DE-9A52-BA127B297A0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet5Localization", "src\AspNet5Localization\AspNet5Localization.xproj", "{A01AD3B8-3568-46DE-9A52-BA127B297A0A}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Localization.SqlLocalizer", "src\Localization.SqlLocalizer\Localization.SqlLocalizer.xproj", "{CC4DCFD2-3869-4BCC-B32F-4FE6EA987D88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization.SqlLocalizer", "src\Localization.SqlLocalizer\Localization.SqlLocalizer.csproj", "{CC4DCFD2-3869-4BCC-B32F-4FE6EA987D88}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ImportExportLocalization", "src\ImportExportLocalization\ImportExportLocalization.xproj", "{CD12C054-2FCB-485A-AA8D-958D36ABFB53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportExportLocalization", "src\ImportExportLocalization\ImportExportLocalization.csproj", "{CD12C054-2FCB-485A-AA8D-958D36ABFB53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
