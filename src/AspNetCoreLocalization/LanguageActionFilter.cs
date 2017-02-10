@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Filters;
     
-namespace AspNet5Localization
+namespace AspNetCoreLocalization
 {
     public class LanguageActionFilter : ActionFilterAttribute
     {

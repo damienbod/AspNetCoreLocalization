@@ -12,7 +12,7 @@ using System.Globalization;
 using Microsoft.Extensions.Options;
 using Localization.SqlLocalizer.DbStringLocalizer;
 
-namespace AspNet5Localization
+namespace AspNetCoreLocalization
 {
     public class Startup
     {
@@ -32,15 +32,12 @@ namespace AspNet5Localization
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddLocalization(options => options.ResourcesPath = "Resources");
-     
-            // init database for localization
+
             var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
 
-            // if you want to add a schema to the localization sql database
-            // services.AddLocalizationSqlSchema("translations");
             services.AddDbContext<LocalizationModelContext>(options =>
-            	options.UseSqlite(
-            		sqlConnectionString,
+                options.UseSqlite(
+                    sqlConnectionString,
                     b => b.MigrationsAssembly("AspNetCoreLocalization")
                 )
             );

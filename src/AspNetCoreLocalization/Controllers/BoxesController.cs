@@ -1,4 +1,4 @@
-﻿using AspNet5Localization.Model;
+﻿using AspNetCoreLocalization.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNet5Localization.Controllers

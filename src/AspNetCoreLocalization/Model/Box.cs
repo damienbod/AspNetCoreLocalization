@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
     
-namespace AspNet5Localization.Model
+namespace AspNetCoreLocalization.Model
 {
     public class Box
     {
