@@ -1,4 +1,9 @@
-Localization.SqlLocalizer [![NuGet Status](http://img.shields.io/nuget/v/Localization.SqlLocalizer.svg?style=flat-square)](https://www.nuget.org/packages/Localization.SqlLocalizer/)
+
+|                           | Build                                                                                                                                                       | Localization.SqlLocalizer                                                                                                                                   |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .net core                 | [![Build status](https://ci.appveyor.com/api/projects/status/gyychgc7l5g4g5lb?svg=true)](https://ci.appveyor.com/project/damienbod/aspnet5localization)      | [![NuGet Status](http://img.shields.io/nuget/v/Localization.SqlLocalizer.svg?style=flat-square)](https://www.nuget.org/packages/Localization.SqlLocalizer/) |
+
+
 ========================
 Documentation: http://localizationsqllocalizer.readthedocs.io/en/latest/
 
@@ -12,7 +17,7 @@ Add the NuGet package to the project.json file
 
 ```
 "dependencies": {
-        "Localization.SqlLocalizer": "1.0.0.0",
+        "Localization.SqlLocalizer": "1.0.7",
 ```
 
 Add the DbContext and use the AddSqlLocalization extension method to add the SQL Localization package.
@@ -45,12 +50,12 @@ dotnet ef database update Localization --context localizationModelContext
 
 ========================
 
-# ASP.NET Core 1.0 MVC Localization Example
+# ASP.NET Core MVC Localization Example
 
 <ul>
-    <li><a href="http://damienbod.com/2015/10/21/asp-net-5-mvc-6-localization/">ASP.NET Core 1.0 MVC Localization</a></li>
-    <li><a href="http://damienbod.com/2015/10/24/using-dataannotations-and-localization-in-asp-net-5-mvc-6/">Using DataAnnotations and Localization in ASP.NET Core 1.0 MVC </a></li>
-    <li><a href="http://damienbod.com/2016/01/29/asp-net-core-1-0-using-sql-localization/">ASP.NET Core 1.0 using SQL Localization</a></li>
+    <li><a href="http://damienbod.com/2015/10/21/asp-net-5-mvc-6-localization/">ASP.NET Core MVC Localization</a></li>
+    <li><a href="http://damienbod.com/2015/10/24/using-dataannotations-and-localization-in-asp-net-5-mvc-6/">Using DataAnnotations and Localization in ASP.NET Core MVC </a></li>
+    <li><a href="http://damienbod.com/2016/01/29/asp-net-core-1-0-using-sql-localization/">ASP.NET Core using SQL Localization</a></li>
 </ul>
 
 
