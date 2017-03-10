@@ -8,13 +8,13 @@ using Localization.SqlLocalizer.DbStringLocalizer;
 namespace AspNetCoreLocalization.Migrations
 {
     [DbContext(typeof(LocalizationModelContext))]
-    [Migration("20170210143716_test")]
+    [Migration("20170310123346_test")]
     partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752");
+                .HasAnnotation("ProductVersion", "1.1.1");
 
             modelBuilder.Entity("Localization.SqlLocalizer.DbStringLocalizer.ExportHistory", b =>
                 {
