@@ -37,7 +37,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         public IStringLocalizer Create(Type resourceSource)
         {
             var returnOnlyKeyIfNotFound = _options.Value.ReturnOnlyKeyIfNotFound;
-
+            var createNewRecordWhenLocalisedStringDoesNotExist = _options.Value.CreateNewRecordWhenLocalisedStringDoesNotExist;
             SqlStringLocalizer sqlStringLocalizer;
 
             if (_options.Value.UseOnlyPropertyNames)
@@ -47,7 +47,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                     return _resourceLocalizations[Global];
                 }
 
-                sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(Global), Global, returnOnlyKeyIfNotFound);
+                sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(Global), _context, Global, returnOnlyKeyIfNotFound, createNewRecordWhenLocalisedStringDoesNotExist);
                 return _resourceLocalizations.GetOrAdd(Global, sqlStringLocalizer);
                 
             }
@@ -58,7 +58,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                     return _resourceLocalizations[resourceSource.FullName];
                 }
 
-                sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.FullName), resourceSource.FullName, returnOnlyKeyIfNotFound);
+                sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.FullName), _context, resourceSource.FullName, returnOnlyKeyIfNotFound, createNewRecordWhenLocalisedStringDoesNotExist);
                 return _resourceLocalizations.GetOrAdd(resourceSource.FullName, sqlStringLocalizer);
             }
 
@@ -67,7 +67,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 return _resourceLocalizations[resourceSource.Name];
             }
 
-            sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.Name), resourceSource.Name, returnOnlyKeyIfNotFound);
+            sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceSource.Name), _context, resourceSource.Name, returnOnlyKeyIfNotFound, createNewRecordWhenLocalisedStringDoesNotExist);
             return _resourceLocalizations.GetOrAdd(resourceSource.Name, sqlStringLocalizer);
         }
 
@@ -78,7 +78,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 return _resourceLocalizations[baseName + location];
             }
 
-            var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(baseName + location), baseName + location, false);
+            var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(baseName + location), _context, baseName + location, false, false);
             return _resourceLocalizations.GetOrAdd(baseName + location, sqlStringLocalizer);
         }
 

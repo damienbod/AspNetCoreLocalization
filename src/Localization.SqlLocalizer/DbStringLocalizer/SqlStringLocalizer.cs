@@ -9,14 +9,18 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     {
         private readonly Dictionary<string, string> _localizations;
 
+        private readonly LocalizationModelContext _context;
         private readonly string _resourceKey;
         private bool _returnKeyOnlyIfNotFound;
+        private bool _createNewRecordWhenLocalisedStringDoesNotExist;
 
-        public SqlStringLocalizer(Dictionary<string, string> localizations, string resourceKey, bool returnKeyOnlyIfNotFound)
+        public SqlStringLocalizer(Dictionary<string, string> localizations, LocalizationModelContext context, string resourceKey, bool returnKeyOnlyIfNotFound, bool createNewRecordWhenLocalisedStringDoesNotExist)
         {
             _localizations = localizations;
+            _context = context;
             _resourceKey = resourceKey;
             _returnKeyOnlyIfNotFound = returnKeyOnlyIfNotFound;
+            _createNewRecordWhenLocalisedStringDoesNotExist = createNewRecordWhenLocalisedStringDoesNotExist;
         }
         public LocalizedString this[string name]
         {
