@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>SQL Localizer for ASP.NET Core, dotnet</Description>
-    <VersionPrefix>1.0.9</VersionPrefix>
+    <VersionPrefix>1.0.10</VersionPrefix>
     <Authors>damienbod</Authors>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>Localization.SqlLocalizer</AssemblyName>
@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/damienbod/AspNet5Localization</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/damienbod/AspNet5Localization</RepositoryUrl>
-    <RuntimeFrameworkVersion>1.1.0</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
