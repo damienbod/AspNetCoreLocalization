@@ -9,15 +9,15 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     {
         private readonly Dictionary<string, string> _localizations;
 
-        private readonly LocalizationModelContext _context;
+        private readonly DevelopmentSetup _developmentSetup;
         private readonly string _resourceKey;
         private bool _returnKeyOnlyIfNotFound;
         private bool _createNewRecordWhenLocalisedStringDoesNotExist;
 
-        public SqlStringLocalizer(Dictionary<string, string> localizations, LocalizationModelContext context, string resourceKey, bool returnKeyOnlyIfNotFound, bool createNewRecordWhenLocalisedStringDoesNotExist)
+        public SqlStringLocalizer(Dictionary<string, string> localizations, DevelopmentSetup developmentSetup, string resourceKey, bool returnKeyOnlyIfNotFound, bool createNewRecordWhenLocalisedStringDoesNotExist)
         {
             _localizations = localizations;
-            _context = context;
+            _developmentSetup = developmentSetup;
             _resourceKey = resourceKey;
             _returnKeyOnlyIfNotFound = returnKeyOnlyIfNotFound;
             _createNewRecordWhenLocalisedStringDoesNotExist = createNewRecordWhenLocalisedStringDoesNotExist;
@@ -68,16 +68,16 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             if (_localizations.TryGetValue(computedKey, out result))
             {
                 notSucceed = false;
-                if(_createNewRecordWhenLocalisedStringDoesNotExist)
-                {
-                    AddNewLocalizedItem(key, culture);
-                }
                 return result;
             }
             else
             {
                 notSucceed = true;
-                if(_returnKeyOnlyIfNotFound)
+                if (_createNewRecordWhenLocalisedStringDoesNotExist)
+                {
+                    _developmentSetup.AddNewLocalizedItem(key, culture, _resourceKey);
+                }
+                if (_returnKeyOnlyIfNotFound)
                 {
                     return key;
                 }
@@ -86,23 +86,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             }
         }
 
-        private void AddNewLocalizedItem(string key, string culture)
-        {
-            string computedKey = $"{key}.{culture}";
-
-            LocalizationRecord localizationRecord = new LocalizationRecord()
-            {
-                LocalizationCulture = culture,
-                Key = key,
-                Text = computedKey,
-                ResourceKey = _resourceKey
-            };
-            _context.LocalizationRecords.Add(localizationRecord);
-            _context.SaveChanges();
-
-            // Add default value, same as computed key
-            _localizations.Add(computedKey, computedKey);
-        }
+        
 
     }
 }
