@@ -68,6 +68,10 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             if (_localizations.TryGetValue(computedKey, out result))
             {
                 notSucceed = false;
+                if(_createNewRecordWhenLocalisedStringDoesNotExist)
+                {
+                    AddNewLocalizedItem(key, culture);
+                }
                 return result;
             }
             else
@@ -81,5 +85,17 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 return _resourceKey + "." + computedKey;
             }
         }
+
+        private void AddNewLocalizedItem(string key, string culture)
+        {
+            string computedKey = $"{key}.{culture}";
+
+            // TODO add to database
+            // Add default value, same as computed key
+            _localizations.Add(computedKey, computedKey);
+
+
+        }
+
     }
 }
