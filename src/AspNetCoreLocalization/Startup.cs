@@ -45,7 +45,7 @@ namespace AspNetCoreLocalization
             var useTypeFullNames = false;
             var useOnlyPropertyNames = false;
             var returnOnlyKeyIfNotFound = false;
-            var createNewRecordWhenLocalisedStringDoesNotExist = false;
+            var createNewRecordWhenLocalisedStringDoesNotExist = true;
 
             // Requires that LocalizationModelContext is defined
             services.AddSqlLocalization(options => options.UseSettings(
