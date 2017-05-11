@@ -90,11 +90,18 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         {
             string computedKey = $"{key}.{culture}";
 
-            // TODO add to database
+            LocalizationRecord localizationRecord = new LocalizationRecord()
+            {
+                LocalizationCulture = culture,
+                Key = key,
+                Text = computedKey,
+                ResourceKey = _resourceKey
+            };
+            _context.LocalizationRecords.Add(localizationRecord);
+            _context.SaveChanges();
+
             // Add default value, same as computed key
             _localizations.Add(computedKey, computedKey);
-
-
         }
 
     }
