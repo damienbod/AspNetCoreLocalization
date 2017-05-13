@@ -2,33 +2,24 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace AspNetCoreProtobuf.IntegrationTests
 {
-    // This project can output the Class library as a NuGet Package.
-    // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
     public class ApiTests
     {
-
-        private readonly TestServer _server;
-        private readonly HttpClient _client;
-
-        public ApiTests()
-        {
-        }
-
         [Fact]
-        public async Task GetProtobufDataAsString()
+        public async Task HelloWorldTest()
         {
             var builder = new WebHostBuilder()
                 .ConfigureServices(services =>
                 {
-                    var sqlConnectionString = Configuration["DbStringLocalizer:ConnectionString"];
+                    var sqlConnectionString = "Data Source=C:\\git\\damienbod\\AspNetCoreLocalization\\AspNetCoreLocalization\\src\\AspNetCoreLocalization\\LocalizationRecords.sqlite";
 
                     services.AddDbContext<LocalizationModelContext>(options =>
                         options.UseSqlite(
@@ -54,13 +45,10 @@ namespace AspNetCoreProtobuf.IntegrationTests
                 })
                 .Configure(app =>
                 {
-                   
                     app.Run(context =>
                     {
-                        var requestCultureFeature = context.Features.Get<IRequestCultureFeature>();
-                        var requestCulture = requestCultureFeature.RequestCulture;
-                        Assert.Equal("ar-SA", requestCulture.Culture.Name);
-                        return Task.FromResult(0);
+                        var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
+                        return context.Response.WriteAsync(response);
                     });
                 });
 
