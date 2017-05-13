@@ -314,5 +314,78 @@ namespace Localization.SqlLocalizer.IntegrationTests
                 Assert.Equal("Localization.SqlLocalizer.IntegrationTests.Controllers.AboutController.AboutTitleNon.de-CH", response);
             }
         }
+
+        [Fact]
+        public async Task GetNonExistingItemUseTypeFullNamesReturnOnlyKey()
+        {
+            var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                {
+                    var sqlConnectionString = "Data Source=.\\LocalizationRecords.sqlite";
+
+                    services.AddDbContext<LocalizationModelContext>(options =>
+                        options.UseSqlite(
+                            sqlConnectionString,
+                            b => b.MigrationsAssembly("AspNetCoreLocalization")
+                        )
+                    );
+
+                    var useTypeFullNames = true;
+                    var useOnlyPropertyNames = false;
+                    var returnOnlyKeyIfNotFound = true;
+                    var createNewRecordWhenLocalisedStringDoesNotExist = false;
+
+                    services.AddSqlLocalization(options => options.UseSettings(
+                        useTypeFullNames,
+                        useOnlyPropertyNames,
+                        returnOnlyKeyIfNotFound,
+                        createNewRecordWhenLocalisedStringDoesNotExist));
+
+                    services.AddMvc()
+                      .AddViewLocalization()
+                      .AddDataAnnotationsLocalization();
+
+                    services.Configure<RequestLocalizationOptions>(
+                        options =>
+                        {
+                            var supportedCultures = new List<CultureInfo>
+                                {
+                            new CultureInfo("en-US"),
+                            new CultureInfo("de-CH"),
+                            new CultureInfo("fr-CH"),
+                            new CultureInfo("it-CH")
+                                };
+
+                            options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
+                            options.SupportedCultures = supportedCultures;
+                            options.SupportedUICultures = supportedCultures;
+                        });
+
+                })
+                .Configure(app =>
+                {
+
+                    var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+                    app.UseRequestLocalization(locOptions.Value);
+
+                    app.UseStaticFiles();
+
+                    app.UseMvc();
+
+                    //app.Run(context =>
+                    //{
+                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
+                    //    return context.Response.WriteAsync(response);
+                    //});
+                });
+
+            using (var server = new TestServer(builder))
+            {
+                var client = server.CreateClient();
+
+                var response = await client.GetStringAsync("api/about/non?culture=de-CH");
+                Assert.Equal("AboutTitleNon", response);
+            }
+        }
     }
 }
