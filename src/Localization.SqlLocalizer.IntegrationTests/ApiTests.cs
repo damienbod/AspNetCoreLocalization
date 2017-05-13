@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
@@ -315,77 +313,77 @@ namespace Localization.SqlLocalizer.IntegrationTests
             }
         }
 
-        [Fact]
-        public async Task GetNonExistingItemUseTypeFullNamesReturnOnlyKey()
-        {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                {
-                    var sqlConnectionString = "Data Source=.\\LocalizationRecords.sqlite";
+        //[Fact]
+        //public async Task GetNonExistingItemUseTypeFullNamesReturnOnlyKey()
+        //{
+        //    var builder = new WebHostBuilder()
+        //        .ConfigureServices(services =>
+        //        {
+        //            var sqlConnectionString = "Data Source=.\\LocalizationRecords.sqlite";
 
-                    services.AddDbContext<LocalizationModelContext>(options =>
-                        options.UseSqlite(
-                            sqlConnectionString,
-                            b => b.MigrationsAssembly("AspNetCoreLocalization")
-                        )
-                    );
+        //            services.AddDbContext<LocalizationModelContext>(options =>
+        //                options.UseSqlite(
+        //                    sqlConnectionString,
+        //                    b => b.MigrationsAssembly("AspNetCoreLocalization")
+        //                )
+        //            );
 
-                    var useTypeFullNames = true;
-                    var useOnlyPropertyNames = false;
-                    var returnOnlyKeyIfNotFound = true;
-                    var createNewRecordWhenLocalisedStringDoesNotExist = false;
+        //            var useTypeFullNames = false;
+        //            var useOnlyPropertyNames = false;
+        //            var returnOnlyKeyIfNotFound = true;
+        //            var createNewRecordWhenLocalisedStringDoesNotExist = false;
 
-                    services.AddSqlLocalization(options => options.UseSettings(
-                        useTypeFullNames,
-                        useOnlyPropertyNames,
-                        returnOnlyKeyIfNotFound,
-                        createNewRecordWhenLocalisedStringDoesNotExist));
+        //            services.AddSqlLocalization(options => options.UseSettings(
+        //                useTypeFullNames,
+        //                useOnlyPropertyNames,
+        //                returnOnlyKeyIfNotFound,
+        //                createNewRecordWhenLocalisedStringDoesNotExist));
 
-                    services.AddMvc()
-                      .AddViewLocalization()
-                      .AddDataAnnotationsLocalization();
+        //            services.AddMvc()
+        //              .AddViewLocalization()
+        //              .AddDataAnnotationsLocalization();
 
-                    services.Configure<RequestLocalizationOptions>(
-                        options =>
-                        {
-                            var supportedCultures = new List<CultureInfo>
-                                {
-                            new CultureInfo("en-US"),
-                            new CultureInfo("de-CH"),
-                            new CultureInfo("fr-CH"),
-                            new CultureInfo("it-CH")
-                                };
+        //            services.Configure<RequestLocalizationOptions>(
+        //                options =>
+        //                {
+        //                    var supportedCultures = new List<CultureInfo>
+        //                        {
+        //                    new CultureInfo("en-US"),
+        //                    new CultureInfo("de-CH"),
+        //                    new CultureInfo("fr-CH"),
+        //                    new CultureInfo("it-CH")
+        //                        };
 
-                            options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
-                            options.SupportedCultures = supportedCultures;
-                            options.SupportedUICultures = supportedCultures;
-                        });
+        //                    options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
+        //                    options.SupportedCultures = supportedCultures;
+        //                    options.SupportedUICultures = supportedCultures;
+        //                });
 
-                })
-                .Configure(app =>
-                {
+        //        })
+        //        .Configure(app =>
+        //        {
 
-                    var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
-                    app.UseRequestLocalization(locOptions.Value);
+        //            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+        //            app.UseRequestLocalization(locOptions.Value);
 
-                    app.UseStaticFiles();
+        //            app.UseStaticFiles();
 
-                    app.UseMvc();
+        //            app.UseMvc();
 
-                    //app.Run(context =>
-                    //{
-                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-                    //    return context.Response.WriteAsync(response);
-                    //});
-                });
+        //            //app.Run(context =>
+        //            //{
+        //            //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
+        //            //    return context.Response.WriteAsync(response);
+        //            //});
+        //        });
 
-            using (var server = new TestServer(builder))
-            {
-                var client = server.CreateClient();
+        //    using (var server = new TestServer(builder))
+        //    {
+        //        var client = server.CreateClient();
 
-                var response = await client.GetStringAsync("api/about/non?culture=de-CH");
-                Assert.Equal("AboutTitleNon", response);
-            }
-        }
+        //        var response = await client.GetStringAsync("api/about/non?culture=fr-CH");
+        //        Assert.Equal("AboutTitleNon", response);
+        //    }
+        //}
     }
 }
