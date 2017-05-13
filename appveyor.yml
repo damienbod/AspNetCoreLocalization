@@ -9,3 +9,6 @@ build_script:
 - dotnet build
 before_build:
 - appveyor-retry dotnet restore -v Minimal
+test_script:
+- cd src/Localization.SqlLocalizer.IntegrationTests
+- dotnet test
