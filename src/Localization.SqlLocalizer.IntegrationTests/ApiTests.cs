@@ -9,9 +9,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
-using System;
 using NUnit.Framework;
-using System.Threading;
 
 namespace Localization.SqlLocalizer.IntegrationTests
 {
