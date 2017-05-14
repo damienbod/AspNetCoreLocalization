@@ -9,7 +9,7 @@
 Documentation: http://localizationsqllocalizer.readthedocs.io/en/latest/
 
 
-<a href="https://www.nuget.org/packages/Localization.SqlLocalizer/">NuGet</a> | <a href="https://github.com/damienbod/AspNet5Localization/issues">Issues</a> | <a href="https://github.com/damienbod/AspNet5Localization/tree/master/AspNet5Localization/src/Localization.SqlLocalizer">Code</a>
+<a href="https://www.nuget.org/packages/Localization.SqlLocalizer/">NuGet</a> | <a href="https://github.com/damienbod/AspNetCoreLocalization/issues">Issues</a> | <a href="https://github.com/damienbod/AspNetCoreLocalization/tree/master/src/Localization.SqlLocalizer">Code</a>
 
 
 <strong>Basic Usage ASP.NET Core</strong>
@@ -18,7 +18,7 @@ Add the NuGet package to the project.json file
 
 ```
 "dependencies": {
-        "Localization.SqlLocalizer": "1.0.9",
+        "Localization.SqlLocalizer": "1.0.10",
 ```
 
 Add the DbContext and use the AddSqlLocalization extension method to add the SQL Localization package.

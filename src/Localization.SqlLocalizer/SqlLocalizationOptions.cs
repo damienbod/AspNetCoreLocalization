@@ -20,16 +20,23 @@ namespace Localization.SqlLocalizer
         public bool ReturnOnlyKeyIfNotFound { get; set; }
 
         /// <summary>
+        /// Creates a new item in the SQL database if the resource is not found
+        /// </summary>
+        public bool CreateNewRecordWhenLocalisedStringDoesNotExist { get; set; }
+
+        /// <summary>
         /// You can set the required properties to set, get, display the different localization
         /// </summary>
         /// <param name="useTypeFullNames"></param>
         /// <param name="useOnlyPropertyNames"></param>
         /// <param name="returnOnlyKeyIfNotFound"></param>
-        public void UseSettings(bool useTypeFullNames, bool useOnlyPropertyNames, bool returnOnlyKeyIfNotFound)
+        /// <param name="createNewRecordWhenLocalisedStringDoesNotExist"></param>
+        public void UseSettings(bool useTypeFullNames, bool useOnlyPropertyNames, bool returnOnlyKeyIfNotFound, bool createNewRecordWhenLocalisedStringDoesNotExist)
         {
             UseTypeFullNames = useTypeFullNames;
             UseOnlyPropertyNames = useOnlyPropertyNames;
             ReturnOnlyKeyIfNotFound = returnOnlyKeyIfNotFound;
-        }
+            CreateNewRecordWhenLocalisedStringDoesNotExist = createNewRecordWhenLocalisedStringDoesNotExist;
+    }
     }
 }

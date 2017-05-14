@@ -16,6 +16,7 @@ namespace AspNetCoreLocalization
 {
     public class Startup
     {
+        private bool _createNewRecordWhenLocalisedStringDoesNotExist = false;
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -25,6 +26,11 @@ namespace AspNetCoreLocalization
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            if (env.IsDevelopment())
+            {
+                _createNewRecordWhenLocalisedStringDoesNotExist = true;
+            }
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -46,8 +52,14 @@ namespace AspNetCoreLocalization
             var useOnlyPropertyNames = false;
             var returnOnlyKeyIfNotFound = false;
 
+
             // Requires that LocalizationModelContext is defined
-            services.AddSqlLocalization(options => options.UseSettings(useTypeFullNames, useOnlyPropertyNames, returnOnlyKeyIfNotFound));
+            // _createNewRecordWhenLocalisedStringDoesNotExist read from the dev env. 
+            services.AddSqlLocalization(options => options.UseSettings(
+                useTypeFullNames, 
+                useOnlyPropertyNames, 
+                returnOnlyKeyIfNotFound,
+                _createNewRecordWhenLocalisedStringDoesNotExist));
             // services.AddSqlLocalization(options => options.ReturnOnlyKeyIfNotFound = true);
             // services.AddLocalization(options => options.ResourcesPath = "Resources");
 

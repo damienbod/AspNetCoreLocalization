@@ -9,14 +9,18 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     {
         private readonly Dictionary<string, string> _localizations;
 
+        private readonly DevelopmentSetup _developmentSetup;
         private readonly string _resourceKey;
         private bool _returnKeyOnlyIfNotFound;
+        private bool _createNewRecordWhenLocalisedStringDoesNotExist;
 
-        public SqlStringLocalizer(Dictionary<string, string> localizations, string resourceKey, bool returnKeyOnlyIfNotFound)
+        public SqlStringLocalizer(Dictionary<string, string> localizations, DevelopmentSetup developmentSetup, string resourceKey, bool returnKeyOnlyIfNotFound, bool createNewRecordWhenLocalisedStringDoesNotExist)
         {
             _localizations = localizations;
+            _developmentSetup = developmentSetup;
             _resourceKey = resourceKey;
             _returnKeyOnlyIfNotFound = returnKeyOnlyIfNotFound;
+            _createNewRecordWhenLocalisedStringDoesNotExist = createNewRecordWhenLocalisedStringDoesNotExist;
         }
         public LocalizedString this[string name]
         {
@@ -69,7 +73,11 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             else
             {
                 notSucceed = true;
-                if(_returnKeyOnlyIfNotFound)
+                if (_createNewRecordWhenLocalisedStringDoesNotExist)
+                {
+                    _developmentSetup.AddNewLocalizedItem(key, culture, _resourceKey);
+                }
+                if (_returnKeyOnlyIfNotFound)
                 {
                     return key;
                 }
@@ -77,5 +85,8 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 return _resourceKey + "." + computedKey;
             }
         }
+
+        
+
     }
 }

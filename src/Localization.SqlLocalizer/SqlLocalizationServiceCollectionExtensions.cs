@@ -53,6 +53,11 @@ namespace Microsoft.Extensions.DependencyInjection
                 typeof(IStringLocalizer),
                 typeof(SqlStringLocalizer),
                 ServiceLifetime.Scoped));
+            services.TryAdd(new ServiceDescriptor(
+              typeof(DevelopmentSetup),
+              typeof(DevelopmentSetup),
+              ServiceLifetime.Singleton));
+            
 
             if (setupAction != null)
             {
