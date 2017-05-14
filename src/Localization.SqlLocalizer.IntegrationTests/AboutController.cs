@@ -4,6 +4,7 @@ using Localization.SqlLocalizer.DbStringLocalizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
+using System.Linq;
 
 namespace Localization.SqlLocalizer.IntegrationTests.Controllers
 {
@@ -13,13 +14,15 @@ namespace Localization.SqlLocalizer.IntegrationTests.Controllers
         private readonly IStringLocalizer<SharedResource> _localizer;
         private readonly IStringLocalizer<AboutController> _aboutLocalizerizer;
         private readonly IStringExtendedLocalizerFactory _stringExtendedLocalizerFactory;
+        private readonly LocalizationModelContext _context;
 
 
-        public AboutController(IStringLocalizer<SharedResource> localizer, IStringLocalizer<AboutController> aboutLocalizerizer, IStringExtendedLocalizerFactory stringExtendedLocalizerFactory)
+        public AboutController(IStringLocalizer<SharedResource> localizer, IStringLocalizer<AboutController> aboutLocalizerizer, IStringExtendedLocalizerFactory stringExtendedLocalizerFactory, LocalizationModelContext context)
         {
             _localizer = localizer;
             _aboutLocalizerizer = aboutLocalizerizer;
             _stringExtendedLocalizerFactory = stringExtendedLocalizerFactory;
+            _context = context;
         }
 
         [HttpGet]
@@ -35,6 +38,13 @@ namespace Localization.SqlLocalizer.IntegrationTests.Controllers
         {
             // _localizer["Name"] 
             return _aboutLocalizerizer["AboutTitleNon"];
+        }
+
+        [HttpGet]
+        [Route("noncount")]
+        public int GetNonExistingTextCount()
+        {
+            return _context.LocalizationRecords.Count();
         }
 
         [HttpGet]

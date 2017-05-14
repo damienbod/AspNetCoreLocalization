@@ -36,9 +36,6 @@ namespace Localization.SqlLocalizer.IntegrationTests
                     var returnOnlyKeyIfNotFound = false;
                     var createNewRecordWhenLocalisedStringDoesNotExist = false;
 
-
-                    // Requires that LocalizationModelContext is defined
-                    // _createNewRecordWhenLocalisedStringDoesNotExist read from the dev env. 
                     services.AddSqlLocalization(options => options.UseSettings(
                         useTypeFullNames,
                         useOnlyPropertyNames,
@@ -76,11 +73,6 @@ namespace Localization.SqlLocalizer.IntegrationTests
 
                     app.UseMvc();
 
-                    //app.Run(context =>
-                    //{
-                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-                    //    return context.Response.WriteAsync(response);
-                    //});
                 });
 
             using (var server = new TestServer(builder))
@@ -111,9 +103,6 @@ namespace Localization.SqlLocalizer.IntegrationTests
                     var returnOnlyKeyIfNotFound = false;
                     var createNewRecordWhenLocalisedStringDoesNotExist = false;
 
-
-                    // Requires that LocalizationModelContext is defined
-                    // _createNewRecordWhenLocalisedStringDoesNotExist read from the dev env. 
                     services.AddSqlLocalization(options => options.UseSettings(
                         useTypeFullNames,
                         useOnlyPropertyNames,
@@ -151,11 +140,6 @@ namespace Localization.SqlLocalizer.IntegrationTests
 
                     app.UseMvc();
 
-                    //app.Run(context =>
-                    //{
-                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-                    //    return context.Response.WriteAsync(response);
-                    //});
                 });
 
             using (var server = new TestServer(builder))
@@ -216,12 +200,6 @@ namespace Localization.SqlLocalizer.IntegrationTests
                     app.UseStaticFiles();
 
                     app.UseMvc();
-
-                    //app.Run(context =>
-                    //{
-                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-                    //    return context.Response.WriteAsync(response);
-                    //});
                 });
 
             using (var server = new TestServer(builder))
@@ -280,14 +258,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
                     app.UseRequestLocalization(locOptions.Value);
 
                     app.UseStaticFiles();
-
                     app.UseMvc();
-
-                    //app.Run(context =>
-                    //{
-                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-                    //    return context.Response.WriteAsync(response);
-                    //});
                 });
 
             using (var server = new TestServer(builder))
@@ -417,12 +388,6 @@ namespace Localization.SqlLocalizer.IntegrationTests
                     app.UseStaticFiles();
 
                     app.UseMvc();
-
-                    //app.Run(context =>
-                    //{
-                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-                    //    return context.Response.WriteAsync(response);
-                    //});
                 });
 
             using (var server = new TestServer(builder))
@@ -431,6 +396,9 @@ namespace Localization.SqlLocalizer.IntegrationTests
 
                 var response = await client.GetStringAsync("api/about/non?culture=de-CH");
                 Assert.AreEqual("AboutController.AboutTitleNon.de-CH", response);
+
+                var responseCount = await client.GetStringAsync("api/about/noncount?culture=de-CH");
+                Assert.AreEqual("1", responseCount);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using NUnit.Framework;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -13,3 +14,5 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("e94b6cae-5e84-43e8-89dc-7af19a781fbb")]
+
+[assembly: Parallelizable(ParallelScope.None)]
