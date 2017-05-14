@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using System;
 using NUnit.Framework;
+using System.Threading;
 
 namespace Localization.SqlLocalizer.IntegrationTests
 {
@@ -342,7 +343,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
             var builder = new WebHostBuilder()
                 .ConfigureServices(services =>
                 {
-                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase());
+                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase(), ServiceLifetime.Singleton);
 
                     var useTypeFullNames = false;
                     var useOnlyPropertyNames = false;
@@ -394,11 +395,14 @@ namespace Localization.SqlLocalizer.IntegrationTests
             {
                 var client = server.CreateClient();
 
-                var response = await client.GetStringAsync("api/about/non?culture=de-CH");
-                Assert.AreEqual("AboutController.AboutTitleNon.de-CH", response);
+                var response1 = await client.GetStringAsync("api/about/non?culture=de-CH");
+                Assert.AreEqual("AboutController.AboutTitleNon.de-CH", response1);
 
-                var responseCount = await client.GetStringAsync("api/about/noncount?culture=de-CH");
-                Assert.AreEqual("1", responseCount);
+                var response = await client.GetStringAsync("api/about/non?culture=es-ES");
+                Assert.AreEqual("AboutController.AboutTitleNon.en-US", response);
+
+                //var responseCount = await client.GetStringAsync("api/about/noncount?culture=de-CH");
+                //Assert.AreEqual("2", responseCount);
             }
         }
     }
