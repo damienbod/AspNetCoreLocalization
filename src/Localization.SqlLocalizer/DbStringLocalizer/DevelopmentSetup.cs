@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 
 namespace Localization.SqlLocalizer.DbStringLocalizer
@@ -8,28 +9,34 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
     {
         private readonly LocalizationModelContext _context;
         private readonly IOptions<SqlLocalizationOptions> _options;
+        private IOptions<RequestLocalizationOptions> _requestLocalizationOptions;
 
         public DevelopmentSetup(
            LocalizationModelContext context,
-           IOptions<SqlLocalizationOptions> localizationOptions)
+           IOptions<SqlLocalizationOptions> localizationOptions,
+           IOptions<RequestLocalizationOptions> requestLocalizationOptions)
         {
             _options = localizationOptions;
             _context = context;
+            _requestLocalizationOptions = requestLocalizationOptions;
         }
 
         public void AddNewLocalizedItem(string key, string culture, string resourceKey)
         {
-            string computedKey = $"{key}.{culture}";
-
-            LocalizationRecord localizationRecord = new LocalizationRecord()
+            if(_requestLocalizationOptions.Value.SupportedCultures.Contains(new System.Globalization.CultureInfo(culture)))
             {
-                LocalizationCulture = culture,
-                Key = key,
-                Text = computedKey,
-                ResourceKey = resourceKey
-            };
-            _context.LocalizationRecords.Add(localizationRecord);
-            _context.SaveChanges();
+                string computedKey = $"{key}.{culture}";
+
+                LocalizationRecord localizationRecord = new LocalizationRecord()
+                {
+                    LocalizationCulture = culture,
+                    Key = key,
+                    Text = computedKey,
+                    ResourceKey = resourceKey
+                };
+                _context.LocalizationRecords.Add(localizationRecord);
+                _context.SaveChanges();
+            }
         }
     }
 }
