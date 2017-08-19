@@ -7,11 +7,13 @@
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <PackageId>Localization.SqlLocalizer</PackageId>
     <PackageTags>Localization;SqlLocalizer;SQlite;Postgres;MS SQLServer</PackageTags>
-    <PackageReleaseNotes>Release Notes: Version 2.0.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Release Notes: Version 2.0.0
+support for ASP.NET Core 2.0</PackageReleaseNotes>
     <PackageIconUrl>http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/damienbod/AspNet5Localization</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/damienbod/AspNet5Localization</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
