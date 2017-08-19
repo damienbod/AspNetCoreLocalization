@@ -20,7 +20,7 @@ namespace ImportExportLocalization.Controllers
             _stringExtendedLocalizerFactory = stringExtendedLocalizerFactory;
         }
 
-        // http://localhost:6062/api/ImportExport/localizedData.csv
+        // http://localhost:44127/api/ImportExport/localizedData.csv
         [HttpGet]
         [Route("localizedData.csv")]
         [Produces("text/csv")]
