@@ -95,7 +95,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
             var builder = new WebHostBuilder()
                 .ConfigureServices(services =>
                 {
-                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase());
+                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"));
 
                     var useTypeFullNames = false;
                     var useOnlyPropertyNames = false;
@@ -156,7 +156,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
             var builder = new WebHostBuilder()
                 .ConfigureServices(services =>
                 {
-                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase());
+                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"));
 
                     var useTypeFullNames = false;
                     var useOnlyPropertyNames = true;
@@ -216,7 +216,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
             var builder = new WebHostBuilder()
                 .ConfigureServices(services =>
                 {
-                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase());
+                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"));
 
                     var useTypeFullNames = true;
                     var useOnlyPropertyNames = false;
@@ -275,7 +275,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
         //    var builder = new WebHostBuilder()
         //        .ConfigureServices(services =>
         //        {
-        //            services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase());
+        //            services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"));
 
         //            var useTypeFullNames = false;
         //            var useOnlyPropertyNames = false;
@@ -341,7 +341,7 @@ namespace Localization.SqlLocalizer.IntegrationTests
             var builder = new WebHostBuilder()
                 .ConfigureServices(services =>
                 {
-                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase(), ServiceLifetime.Singleton);
+                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"), ServiceLifetime.Singleton);
 
                     var useTypeFullNames = false;
                     var useOnlyPropertyNames = false;

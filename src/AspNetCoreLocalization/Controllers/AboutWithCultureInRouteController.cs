@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace AspNet5Localization.Controllers
+namespace AspNetCoreLocalization.Controllers
 {
     [ServiceFilter(typeof(LanguageActionFilter))]
     [Route("api/{culture}/[controller]")]

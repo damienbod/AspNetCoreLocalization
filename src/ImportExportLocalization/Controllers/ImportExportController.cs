@@ -20,7 +20,7 @@ namespace ImportExportLocalization.Controllers
             _stringExtendedLocalizerFactory = stringExtendedLocalizerFactory;
         }
 
-        // http://localhost:6062/api/ImportExport/localizedData.csv
+        // http://localhost:44127/api/ImportExport/localizedData.csv
         [HttpGet]
         [Route("localizedData.csv")]
         [Produces("text/csv")]
@@ -43,7 +43,7 @@ namespace ImportExportLocalization.Controllers
                 {
                     if (file.Length > 0)
                     {
-                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.ToString().Trim('"');
                         contentTypes.Add(file.ContentType);
 
                         var inputStream = file.OpenReadStream();
@@ -70,7 +70,7 @@ namespace ImportExportLocalization.Controllers
                 {
                     if (file.Length > 0)
                     {
-                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.ToString().Trim('"');
                         contentTypes.Add(file.ContentType);
 
                         var inputStream = file.OpenReadStream();

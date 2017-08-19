@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
 
-namespace AspNet5Localization.Controllers
+namespace AspNetCoreLocalization.Controllers
 {
     [Route("api/[controller]")]
     public class AboutController : Controller
