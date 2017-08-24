@@ -22,18 +22,8 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
            DevelopmentSetup developmentSetup,
            IOptions<SqlLocalizationOptions> localizationOptions)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(LocalizationModelContext));
-            }
-
-            if (localizationOptions == null)
-            {
-                throw new ArgumentNullException(nameof(localizationOptions));
-            }
-
-            _options = localizationOptions;
-            _context = context;
+            _options = localizationOptions ?? throw new ArgumentNullException(nameof(localizationOptions));
+            _context = context ?? throw new ArgumentNullException(nameof(LocalizationModelContext));
             _developmentSetup = developmentSetup;
         }
 
