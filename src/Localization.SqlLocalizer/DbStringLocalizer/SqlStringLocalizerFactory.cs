@@ -125,6 +125,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
  
         public void UpdatetLocalizationData(List<LocalizationRecord> data, string information)
         {
+            _context.DetachAllEntities();
             _context.UpdateRange(data);
             _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
             _context.SaveChanges();
@@ -132,6 +133,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public void AddNewLocalizationData(List<LocalizationRecord> data, string information)
         {
+            _context.DetachAllEntities();
             _context.AddRange(data);
             _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
             _context.SaveChanges();
