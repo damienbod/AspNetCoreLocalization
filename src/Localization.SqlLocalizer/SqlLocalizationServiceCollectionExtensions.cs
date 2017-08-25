@@ -44,20 +44,19 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAdd(new ServiceDescriptor(
                 typeof(IStringExtendedLocalizerFactory),
                 typeof(SqlStringLocalizerFactory),
-                ServiceLifetime.Scoped));
+                ServiceLifetime.Singleton));
             services.TryAdd(new ServiceDescriptor(
                 typeof(IStringLocalizerFactory),
                 typeof(SqlStringLocalizerFactory),
-                ServiceLifetime.Scoped));
+                ServiceLifetime.Singleton));
             services.TryAdd(new ServiceDescriptor(
                 typeof(IStringLocalizer),
                 typeof(SqlStringLocalizer),
-                ServiceLifetime.Scoped));
+                ServiceLifetime.Transient));
             services.TryAdd(new ServiceDescriptor(
               typeof(DevelopmentSetup),
               typeof(DevelopmentSetup),
               ServiceLifetime.Singleton));
-            
 
             if (setupAction != null)
             {

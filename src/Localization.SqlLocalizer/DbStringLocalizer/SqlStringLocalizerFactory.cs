@@ -22,18 +22,8 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
            DevelopmentSetup developmentSetup,
            IOptions<SqlLocalizationOptions> localizationOptions)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(LocalizationModelContext));
-            }
-
-            if (localizationOptions == null)
-            {
-                throw new ArgumentNullException(nameof(localizationOptions));
-            }
-
-            _options = localizationOptions;
-            _context = context;
+            _options = localizationOptions ?? throw new ArgumentNullException(nameof(localizationOptions));
+            _context = context ?? throw new ArgumentNullException(nameof(LocalizationModelContext));
             _developmentSetup = developmentSetup;
         }
 
@@ -135,6 +125,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
  
         public void UpdatetLocalizationData(List<LocalizationRecord> data, string information)
         {
+            _context.DetachAllEntities();
             _context.UpdateRange(data);
             _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
             _context.SaveChanges();
@@ -142,6 +133,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public void AddNewLocalizationData(List<LocalizationRecord> data, string information)
         {
+            _context.DetachAllEntities();
             _context.AddRange(data);
             _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
             _context.SaveChanges();

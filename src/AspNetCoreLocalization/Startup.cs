@@ -45,7 +45,9 @@ namespace AspNetCoreLocalization
                 options.UseSqlite(
                     sqlConnectionString,
                     b => b.MigrationsAssembly("AspNetCoreLocalization")
-                )
+                ),
+                ServiceLifetime.Singleton,
+                ServiceLifetime.Singleton
             );
 
             var useTypeFullNames = false;
@@ -97,18 +99,6 @@ namespace AspNetCoreLocalization
             app.UseStaticFiles();
 
             app.UseMvc();
-        }
-
-        public static void Main(string[] args)
-        {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
-
-            host.Run();
         }
     }
 }

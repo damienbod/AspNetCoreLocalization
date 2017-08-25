@@ -56,5 +56,14 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 entry.Property("UpdatedTimestamp").CurrentValue = DateTime.UtcNow;
             }
         }
+
+        public void DetachAllEntities()
+        {
+            var changedEntriesCopy = ChangeTracker.Entries().ToList();
+            foreach (var entity in changedEntriesCopy)
+            {
+                Entry(entity.Entity).State = EntityState.Detached;
+            }
+        }
     }
 }
