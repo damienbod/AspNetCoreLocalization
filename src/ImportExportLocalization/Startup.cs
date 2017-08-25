@@ -37,7 +37,9 @@ namespace ImportExportLocalization
                 options.UseSqlite(
                     sqlConnectionString,
                     b => b.MigrationsAssembly("ImportExportLocalization")
-                )
+                ),
+                ServiceLifetime.Singleton,
+                ServiceLifetime.Singleton
             );
 
             // Requires that LocalizationModelContext is defined
