@@ -18,7 +18,7 @@ Add the NuGet package to the project.json file
 
 ```
 "dependencies": {
-        "Localization.SqlLocalizer": "2.0.0",
+        "Localization.SqlLocalizer": "2.0.1",
 ```
 
 Add the DbContext and use the AddSqlLocalization extension method to add the SQL Localization package.
@@ -32,8 +32,10 @@ public void ConfigureServices(IServiceCollection services)
     services.AddDbContext<LocalizationModelContext>(options =>
         options.UseSqlite(
             sqlConnectionString,
-            b => b.MigrationsAssembly("Angular2LocalizationAspNetCore")
-        )
+            b => b.MigrationsAssembly("ImportExportLocalization")
+        ),
+        ServiceLifetime.Singleton,
+        ServiceLifetime.Singleton
     );
 
     // Requires that LocalizationModelContext is defined
