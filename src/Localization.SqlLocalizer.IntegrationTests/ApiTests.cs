@@ -394,10 +394,10 @@ namespace Localization.SqlLocalizer.IntegrationTests
                 var client = server.CreateClient();
 
                 var response1 = await client.GetStringAsync("api/about/non?culture=de-CH");
-                Assert.AreEqual("AboutController.AboutTitleNon.de-CH", response1);
+                Assert.AreEqual("AboutTitleNon.de-CH", response1);
 
                 var response = await client.GetStringAsync("api/about/non?culture=es-ES");
-                Assert.AreEqual("AboutController.AboutTitleNon.en-US", response);
+                Assert.AreEqual("AboutTitleNon.en-US", response);
 
                 //var responseCount = await client.GetStringAsync("api/about/noncount?culture=de-CH");
                 //Assert.AreEqual("2", responseCount);
@@ -463,13 +463,13 @@ namespace Localization.SqlLocalizer.IntegrationTests
                 var client = server.CreateClient();
 
                 var response = await client.GetStringAsync("api/about/devmodetest?culture=de-CH");
-                Assert.AreEqual("AboutController.devmodetest.de-CH", response);
+                Assert.AreEqual("devmodetest.de-CH", response);
 
                 var responseAgain = await client.GetStringAsync("api/about/devmodetest?culture=de-CH");
-                Assert.AreEqual("AboutController.devmodetest.de-CH", responseAgain);
+                Assert.AreEqual("devmodetest.de-CH", responseAgain);
 
                 var response2 = await client.GetStringAsync("api/about/devmodetest2?culture=it-CH");
-                Assert.AreEqual("AboutController.devmodetest2.it-CH", response2);
+                Assert.AreEqual("devmodetest2.it-CH", response2);
             }
         }
 
