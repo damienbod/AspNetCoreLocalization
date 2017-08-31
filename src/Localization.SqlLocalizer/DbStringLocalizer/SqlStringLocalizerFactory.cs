@@ -78,12 +78,14 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         public void ResetCache()
         {
             _resourceLocalizations.Clear();
+            _context.DetachAllEntities();
         }
 
         public void ResetCache(Type resourceSource)
         {
             IStringLocalizer returnValue;
             _resourceLocalizations.TryRemove(resourceSource.FullName, out returnValue);
+            _context.DetachAllEntities();
         }
 
         private Dictionary<string, string> GetAllFromDatabaseForResource(string resourceKey)
