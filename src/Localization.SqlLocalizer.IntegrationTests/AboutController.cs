@@ -45,6 +45,20 @@ namespace Localization.SqlLocalizer.IntegrationTests.Controllers
         }
 
         [HttpGet]
+        [Route("devmodetest")]
+        public string GetNonExistingTextDevModeAndCreate()
+        {
+            return _aboutLocalizerizer["devmodetest"];
+        }
+
+        [HttpGet]
+        [Route("devmodetest2")]
+        public string GetNonExistingTextDevModeAndCreate2()
+        {
+            return _aboutLocalizerizer["devmodetest2"];
+        }
+
+        [HttpGet]
         [Route("reset")]
         public string Reset()
         {

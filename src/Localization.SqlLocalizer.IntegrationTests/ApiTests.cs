@@ -403,5 +403,75 @@ namespace Localization.SqlLocalizer.IntegrationTests
                 //Assert.AreEqual("2", responseCount);
             }
         }
+
+        [Test]
+        public async Task AddNewItemDeveopmentMode()
+        {
+            var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                {
+                    services.AddDbContext<LocalizationModelContext>(options =>
+                        options.UseInMemoryDatabase(databaseName: "Add_writes_to_database")
+                    );
+
+                    var useTypeFullNames = false;
+                    var useOnlyPropertyNames = false;
+                    var returnOnlyKeyIfNotFound = false;
+                    var createNewRecordWhenLocalisedStringDoesNotExist = true;
+
+                    services.AddSqlLocalization(options => options.UseSettings(
+                        useTypeFullNames,
+                        useOnlyPropertyNames,
+                        returnOnlyKeyIfNotFound,
+                        createNewRecordWhenLocalisedStringDoesNotExist));
+
+                    services.AddMvc()
+                      .AddViewLocalization()
+                      .AddDataAnnotationsLocalization();
+
+                    services.Configure<RequestLocalizationOptions>(
+                        options =>
+                        {
+                            var supportedCultures = new List<CultureInfo>
+                                {
+                            new CultureInfo("en-US"),
+                            new CultureInfo("de-CH"),
+                            new CultureInfo("fr-CH"),
+                            new CultureInfo("it-CH")
+                                };
+
+                            options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
+                            options.SupportedCultures = supportedCultures;
+                            options.SupportedUICultures = supportedCultures;
+                        });
+
+                })
+                .Configure(app =>
+                {
+
+                    var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+                    app.UseRequestLocalization(locOptions.Value);
+
+                    app.UseStaticFiles();
+
+                    app.UseMvc();
+
+                });
+
+            using (var server = new TestServer(builder))
+            {
+                var client = server.CreateClient();
+
+                var response = await client.GetStringAsync("api/about/devmodetest?culture=de-CH");
+                Assert.AreEqual("AboutController.devmodetest.de-CH", response);
+
+                var responseAgain = await client.GetStringAsync("api/about/devmodetest?culture=de-CH");
+                Assert.AreEqual("AboutController.devmodetest.de-CH", responseAgain);
+
+                var response2 = await client.GetStringAsync("api/about/devmodetest2?culture=it-CH");
+                Assert.AreEqual("AboutController.devmodetest2.it-CH", response2);
+            }
+        }
+
     }
 }
