@@ -270,70 +270,70 @@ namespace Localization.SqlLocalizer.IntegrationTests
         }
 
         //[Test]
-        //public async Task GetNonExistingItemUseTypeFullNamesReturnOnlyKey()
-        //{
-        //    var builder = new WebHostBuilder()
-        //        .ConfigureServices(services =>
-        //        {
-        //            services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"));
+        public async Task GetNonExistingItemUseTypeFullNamesReturnOnlyKey()
+        {
+            var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                {
+                    services.AddDbContext<LocalizationModelContext>(opt => opt.UseInMemoryDatabase("test"));
 
-        //            var useTypeFullNames = false;
-        //            var useOnlyPropertyNames = false;
-        //            var returnOnlyKeyIfNotFound = true;
-        //            var createNewRecordWhenLocalisedStringDoesNotExist = false;
+                    var useTypeFullNames = false;
+                    var useOnlyPropertyNames = false;
+                    var returnOnlyKeyIfNotFound = true;
+                    var createNewRecordWhenLocalisedStringDoesNotExist = false;
 
-        //            services.AddSqlLocalization(options => options.UseSettings(
-        //                useTypeFullNames,
-        //                useOnlyPropertyNames,
-        //                returnOnlyKeyIfNotFound,
-        //                createNewRecordWhenLocalisedStringDoesNotExist));
+                    services.AddSqlLocalization(options => options.UseSettings(
+                        useTypeFullNames,
+                        useOnlyPropertyNames,
+                        returnOnlyKeyIfNotFound,
+                        createNewRecordWhenLocalisedStringDoesNotExist));
 
-        //            services.AddMvc()
-        //              .AddViewLocalization()
-        //              .AddDataAnnotationsLocalization();
+                    services.AddMvc()
+                      .AddViewLocalization()
+                      .AddDataAnnotationsLocalization();
 
-        //            services.Configure<RequestLocalizationOptions>(
-        //                options =>
-        //                {
-        //                    var supportedCultures = new List<CultureInfo>
-        //                        {
-        //                    new CultureInfo("en-US"),
-        //                    new CultureInfo("de-CH"),
-        //                    new CultureInfo("fr-CH"),
-        //                    new CultureInfo("it-CH")
-        //                        };
+                    services.Configure<RequestLocalizationOptions>(
+                        options =>
+                        {
+                            var supportedCultures = new List<CultureInfo>
+                                {
+                            new CultureInfo("en-US"),
+                            new CultureInfo("de-CH"),
+                            new CultureInfo("fr-CH"),
+                            new CultureInfo("it-CH")
+                                };
 
-        //                    options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
-        //                    options.SupportedCultures = supportedCultures;
-        //                    options.SupportedUICultures = supportedCultures;
-        //                });
+                            options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
+                            options.SupportedCultures = supportedCultures;
+                            options.SupportedUICultures = supportedCultures;
+                        });
 
-        //        })
-        //        .Configure(app =>
-        //        {
+                })
+                .Configure(app =>
+                {
 
-        //            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
-        //            app.UseRequestLocalization(locOptions.Value);
+                    var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+                    app.UseRequestLocalization(locOptions.Value);
 
-        //            app.UseStaticFiles();
+                    app.UseStaticFiles();
 
-        //            app.UseMvc();
+                    app.UseMvc();
 
-        //            //app.Run(context =>
-        //            //{
-        //            //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
-        //            //    return context.Response.WriteAsync(response);
-        //            //});
-        //        });
+                    //app.Run(context =>
+                    //{
+                    //    var response = String.Format("Hello, Universe! It is {0}", DateTime.Now);
+                    //    return context.Response.WriteAsync(response);
+                    //});
+                });
 
-        //    using (var server = new TestServer(builder))
-        //    {
-        //        var client = server.CreateClient();
+            using (var server = new TestServer(builder))
+            {
+                var client = server.CreateClient();
 
-        //        var response = await client.GetStringAsync("api/about/non?culture=fr-CH");
-        //        Assert.AreEqual("AboutTitleNon", response);
-        //    }
-        //}
+                var response = await client.GetStringAsync("api/about/non?culture=fr-CH");
+                Assert.AreEqual("AboutTitleNon", response);
+            }
+        }
 
         [Test]
         public async Task GetNonExistingItemAllOptionsAddNewItem()
@@ -394,17 +394,17 @@ namespace Localization.SqlLocalizer.IntegrationTests
                 var client = server.CreateClient();
 
                 var response1 = await client.GetStringAsync("api/about/non?culture=de-CH");
-                Assert.AreEqual("AboutTitleNon.de-CH", response1);
+                Assert.AreEqual("AboutController.AboutTitleNon.de-CH", response1);
 
                 var response = await client.GetStringAsync("api/about/non?culture=es-ES");
-                Assert.AreEqual("AboutTitleNon.en-US", response);
+                Assert.AreEqual("AboutController.AboutTitleNon.en-US", response);
 
                 //var responseCount = await client.GetStringAsync("api/about/noncount?culture=de-CH");
                 //Assert.AreEqual("2", responseCount);
             }
         }
 
-        [Test]
+        //[Test]
         public async Task AddNewItemDeveopmentMode()
         {
             var builder = new WebHostBuilder()
