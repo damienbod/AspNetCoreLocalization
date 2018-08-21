@@ -34,8 +34,12 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                     Text = computedKey,
                     ResourceKey = resourceKey
                 };
-                _context.LocalizationRecords.Add(localizationRecord);
-                _context.SaveChanges();
+
+                lock (_context)
+                {
+                    _context.LocalizationRecords.Add(localizationRecord);
+                    _context.SaveChanges();
+                }
             }
         }
     }
