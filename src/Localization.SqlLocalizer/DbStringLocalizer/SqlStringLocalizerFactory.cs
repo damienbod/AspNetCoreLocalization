@@ -78,67 +78,101 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         public void ResetCache()
         {
             _resourceLocalizations.Clear();
-            _context.DetachAllEntities();
+
+            lock (_context)
+            {
+                _context.DetachAllEntities();
+            }
         }
 
         public void ResetCache(Type resourceSource)
         {
             IStringLocalizer returnValue;
             _resourceLocalizations.TryRemove(resourceSource.FullName, out returnValue);
-            _context.DetachAllEntities();
+
+            lock (_context)
+            {
+                _context.DetachAllEntities();                
+            }
         }
 
         private Dictionary<string, string> GetAllFromDatabaseForResource(string resourceKey)
         {
-            return _context.LocalizationRecords.Where(data => data.ResourceKey == resourceKey).ToDictionary(kvp => (kvp.Key + "." + kvp.LocalizationCulture), kvp => kvp.Text);
+            lock (_context)
+            {
+                return _context.LocalizationRecords.Where(data => data.ResourceKey == resourceKey)
+                    .ToDictionary(kvp => (kvp.Key + "." + kvp.LocalizationCulture), kvp => kvp.Text);
+            }
         }
 
         public IList GetImportHistory()
         {
-            return _context.ImportHistoryDbSet.ToList();
+            lock (_context)
+            {
+                return _context.ImportHistoryDbSet.ToList();
+            }
         }
 
         public IList GetExportHistory()
         {
-            return _context.ExportHistoryDbSet.ToList();
+            lock (_context)
+            {
+                return _context.ExportHistoryDbSet.ToList();
+            }
         }
 
         public IList GetLocalizationData(string reason = "export")
         {
-            _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
-            _context.SaveChanges();
+            lock (_context)
+            {
+                _context.ExportHistoryDbSet.Add(new ExportHistory {Reason = reason, Exported = DateTime.UtcNow});
+                _context.SaveChanges();
 
-            return  _context.LocalizationRecords.ToList();
+                return _context.LocalizationRecords.ToList();
+            }
         }
 
         public IList GetLocalizationData(DateTime from, string culture = null, string reason = "export")
         {
-            _context.ExportHistoryDbSet.Add(new ExportHistory { Reason = reason, Exported = DateTime.UtcNow });
-            _context.SaveChanges();
-
-            if (culture != null)
+            lock (_context)
             {
-                return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from && item.LocalizationCulture == culture).ToList();
-            }
+                _context.ExportHistoryDbSet.Add(new ExportHistory {Reason = reason, Exported = DateTime.UtcNow});
+                _context.SaveChanges();
 
-            return _context.LocalizationRecords.Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from).ToList();
+                if (culture != null)
+                {
+                    return _context.LocalizationRecords.Where(item =>
+                            EF.Property<DateTime>(item, "UpdatedTimestamp") > from &&
+                            item.LocalizationCulture == culture)
+                        .ToList();
+                }
+
+                return _context.LocalizationRecords
+                    .Where(item => EF.Property<DateTime>(item, "UpdatedTimestamp") > from).ToList();
+            }
         }
 
  
         public void UpdatetLocalizationData(List<LocalizationRecord> data, string information)
         {
-            _context.DetachAllEntities();
-            _context.UpdateRange(data);
-            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
-            _context.SaveChanges();
+            lock (_context)
+            {
+                _context.DetachAllEntities();
+                _context.UpdateRange(data);
+                _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
+                _context.SaveChanges();                
+            }
         }
 
         public void AddNewLocalizationData(List<LocalizationRecord> data, string information)
         {
-            _context.DetachAllEntities();
-            _context.AddRange(data);
-            _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
-            _context.SaveChanges();
+            lock (_context)
+            {
+                _context.DetachAllEntities();
+                _context.AddRange(data);
+                _context.ImportHistoryDbSet.Add(new ImportHistory { Information = information, Imported = DateTime.UtcNow });
+                _context.SaveChanges();                
+            }
         }
     }
 }
