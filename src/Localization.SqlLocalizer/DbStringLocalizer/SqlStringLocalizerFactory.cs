@@ -66,6 +66,8 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
 
         public IStringLocalizer Create(string baseName, string location)
         {
+            var returnOnlyKeyIfNotFound = _options.Value.ReturnOnlyKeyIfNotFound;
+            var createNewRecordWhenLocalisedStringDoesNotExist = _options.Value.CreateNewRecordWhenLocalisedStringDoesNotExist;
             if (_resourceLocalizations.Keys.Contains(baseName + location))
             {
                 return _resourceLocalizations[baseName + location];
