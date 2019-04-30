@@ -73,7 +73,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 return _resourceLocalizations[baseName + location];
             }
 
-            var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(baseName + location), _developmentSetup, baseName + location, false, false);
+            var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(baseName + location), _developmentSetup, baseName + location, returnOnlyKeyIfNotFound, createNewRecordWhenLocalisedStringDoesNotExist);
             return _resourceLocalizations.GetOrAdd(baseName + location, sqlStringLocalizer);
         }
 
