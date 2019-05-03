@@ -16,7 +16,7 @@ fixed multi threading issues</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/damienbod/AspNet5Localization</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.4</Version>
+    <Version>2.0.5</Version>
     <PackageLicenseUrl>https://github.com/damienbod/AspNet5Localization/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>2019 @damienbod</Copyright>
   </PropertyGroup>
