@@ -2,31 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\**\*;Views;Areas\**\Views;appsettings.json;config.json;web.config">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4" PrivateAssets="All" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-beta" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\Localization.SqlLocalizer\Localization.SqlLocalizer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-beta" />
-  </ItemGroup>
-
-  <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('node_modules') ">
