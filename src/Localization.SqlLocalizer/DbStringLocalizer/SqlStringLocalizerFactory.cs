@@ -81,7 +81,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             }
 
             var sqlStringLocalizer = new SqlStringLocalizer(GetAllFromDatabaseForResource(resourceKey), _developmentSetup, resourceKey, returnOnlyKeyIfNotFound, createNewRecordWhenLocalisedStringDoesNotExist);
-            return _resourceLocalizations.GetOrAdd(baseName + location, sqlStringLocalizer);
+            return _resourceLocalizations.GetOrAdd(resourceKey, sqlStringLocalizer);
         }
 
         public void ResetCache()
