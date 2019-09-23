@@ -81,6 +81,7 @@ namespace AspNetCoreLocalization
                 });
 
             services.AddControllersWithViews()
+                .AddNewtonsoftJson()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>
