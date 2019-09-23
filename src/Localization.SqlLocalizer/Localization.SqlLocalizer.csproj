@@ -9,14 +9,14 @@
     <Summary>ASP.NET Core Localization using SQL with EF Core</Summary>
     <PackageId>Localization.SqlLocalizer</PackageId>
     <PackageTags>Localization;SqlLocalizer;SQlite;Postgres;MS SQL Server;MySQL</PackageTags>
-    <PackageReleaseNotes>Release Notes: Version 2.0.5
-fixed multi threading issues</PackageReleaseNotes>
+    <PackageReleaseNotes>Release Notes: Version 2.0.6
+View localizer now respects UsePropertyNamesOnly property. fixed unused service</PackageReleaseNotes>
     <PackageIconUrl>http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/damienbod/AspNet5Localization</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/damienbod/AspNet5Localization</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.5</Version>
+    <Version>2.0.6</Version>
     <PackageLicenseUrl>https://github.com/damienbod/AspNet5Localization/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>2019 @damienbod</Copyright>
   </PropertyGroup>
