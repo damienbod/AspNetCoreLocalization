@@ -4,7 +4,7 @@
     <Description>SQL Localizer for ASP.NET Core, dotnet</Description>
     <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>damienbod</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <title>Localization.SqlLocalizer</title>
     <Summary>ASP.NET Core Localization using SQL with EF Core</Summary>
     <PackageId>Localization.SqlLocalizer</PackageId>
