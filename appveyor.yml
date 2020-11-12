@@ -1,10 +1,15 @@
-image: Visual Studio 2017
+image: Visual Studio 2019 Preview
 init:
   - git config --global core.autocrlf true
+environment:
+  nodejs_version: "12"
 install:
   - ECHO %APPVEYOR_BUILD_WORKER_IMAGE%
+  - ps: Install-Product node $env:nodejs_version
+  - cmd: choco install dotnetcore-sdk --pre
   - dotnet --version
   - dotnet restore
+  - choco install googlechrome
 build_script:
 - dotnet build
 before_build:

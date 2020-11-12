@@ -49,10 +49,10 @@ namespace Microsoft.Extensions.DependencyInjection
                 typeof(IStringLocalizerFactory),
                 typeof(SqlStringLocalizerFactory),
                 ServiceLifetime.Singleton));
-            services.TryAdd(new ServiceDescriptor(
-                typeof(IStringLocalizer),
-                typeof(SqlStringLocalizer),
-                ServiceLifetime.Transient));
+            //services.TryAdd(new ServiceDescriptor(
+            //    typeof(IStringLocalizer),
+            //    typeof(SqlStringLocalizer),
+            //    ServiceLifetime.Transient));
             services.TryAdd(new ServiceDescriptor(
               typeof(DevelopmentSetup),
               typeof(DevelopmentSetup),
