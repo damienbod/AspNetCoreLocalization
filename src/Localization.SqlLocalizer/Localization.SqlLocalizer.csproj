@@ -15,26 +15,26 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/damienbod/AspNet5Localization</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.7</Version>
+    <Version>3.0.0</Version>
     <PackageLicenseUrl>https://github.com/damienbod/AspNet5Localization/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>2020 @damienbod</Copyright>
   </PropertyGroup>
 
-  <ItemGroup  Condition="'$(TargetFramework)'=='netstandard2.0'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Microsoft.AspNetCore.Localization" Version="[2.0.0,3.0.0)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[2.0.0,3.0.0)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[2.0.0,3.0.0)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[2.0.0,3.0.0)" />
   </ItemGroup>
   
-  <ItemGroup  Condition="'$(TargetFramework)'=='netcoreapp3.1'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[3.0.0,5.0.0)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[3.0.0,5.0.0)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[3.0.0,5.0.0)" />
   </ItemGroup>
   
-  <ItemGroup  Condition="'$(TargetFramework)'=='net5.0'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net5.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[5.0.0,)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[5.0.0,)" />
