@@ -1,4 +1,4 @@
-# An ASP.NET Core IdentityServer4 Identity Template with Bootstrap 4 and localization
+# Localization.SqlLocalizer: ASP.NET Core Localization database implementation
 
 [Readme](https://github.com/damienbod/AspNetCoreLocalization/blob/master/README.md) 
 
