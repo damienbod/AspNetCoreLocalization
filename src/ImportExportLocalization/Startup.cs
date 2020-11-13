@@ -39,11 +39,9 @@ namespace ImportExportLocalization
                 ServiceLifetime.Singleton
             );
 
-            // Requires that LocalizationModelContext is defined
             services.AddSqlLocalization(options => options.UseTypeFullNames = true);
 
             services.AddControllersWithViews()
-                .AddNewtonsoftJson()
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
 

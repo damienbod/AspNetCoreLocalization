@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Threading.Tasks;
 using Localization.SqlLocalizer.DbStringLocalizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
-using Newtonsoft.Json;
 
 namespace ImportExportLocalization.Controllers
 {

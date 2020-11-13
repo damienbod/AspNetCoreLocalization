@@ -14,7 +14,7 @@ Documentation: http://localizationsqllocalizer.readthedocs.io/en/latest/
 
 <strong>Basic Usage ASP.NET Core</strong>
 
-Add the NuGet package to the project.json file
+Add the NuGet package to the project.csproj file
 
 ```
 "dependencies": {
