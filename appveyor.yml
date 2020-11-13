@@ -9,7 +9,6 @@ install:
   - cmd: choco install dotnetcore-sdk --pre
   - dotnet --version
   - dotnet restore
-  - choco install googlechrome
 build_script:
 - dotnet build
 before_build:
