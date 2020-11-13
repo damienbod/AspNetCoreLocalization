@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <Description>SQL Localizer for ASP.NET Core, dotnet</Description>
-    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionPrefix>3.0.0</VersionPrefix>
     <Authors>damienbod</Authors>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0</TargetFrameworks>
     <title>Localization.SqlLocalizer</title>
     <Summary>ASP.NET Core Localization using SQL with EF Core</Summary>
     <PackageId>Localization.SqlLocalizer</PackageId>
     <PackageTags>Localization;SqlLocalizer;SQlite;Postgres;MS SQL Server;MySQL</PackageTags>
-    <PackageReleaseNotes>Release Notes: Version 2.0.7 Fixed a performance issue for update,add</PackageReleaseNotes>
+    <PackageReleaseNotes>Release Notes: Version 3.0.0 .NET 5</PackageReleaseNotes>
     <PackageIconUrl>http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/damienbod/AspNet5Localization</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
