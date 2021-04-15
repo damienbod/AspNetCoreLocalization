@@ -37,7 +37,8 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         {
             get
             {
-                return this[name];
+                var localizedString = this[name];
+                return new LocalizedString(name, String.Format(localizedString.Value, arguments), localizedString.ResourceNotFound);
             }
         }
 
