@@ -29,9 +29,9 @@
   
   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[3.0.0,5.0.0)" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[3.0.0,5.0.0)" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[3.0.0,5.0.0)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[3.0.0,6.0.0)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[3.0.0,6.0.0)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[3.0.0,6.0.0)" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)'=='net5.0'">
