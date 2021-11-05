@@ -18,7 +18,7 @@ Add the NuGet package to the project.csproj file
 
 ```
 "dependencies": {
-        "Localization.SqlLocalizer": "3.0.0",
+        "Localization.SqlLocalizer": "3.1.0",
 ```
 
 Add the DbContext and use the AddSqlLocalization extension method to add the SQL Localization package.
