@@ -2,6 +2,10 @@
 
 [Readme](https://github.com/damienbod/AspNetCoreLocalization/blob/master/README.md) 
 
+2021-11-05 3.1.0
+- Updated packages
+- Add app support for Entity Framework 5.0 
+
 2020-11-13 3.0.0
 - First Version .NET 5
    
