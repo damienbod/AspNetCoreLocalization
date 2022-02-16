@@ -57,16 +57,18 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
         {
 
 #if NET451
-            var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
 #elif NET46
-            var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
 #else
-            var culture = CultureInfo.CurrentCulture.ToString();
+            var culture = CultureInfo.CurrentCulture;
 #endif
+
             string computedKey = $"{key}.{culture}";
+            string parentComputedKey = $"{key}.{culture.Parent.TwoLetterISOLanguageName}";
 
             string result;
-            if (_localizations.TryGetValue(computedKey, out result))
+            if (_localizations.TryGetValue(computedKey, out result) || _localizations.TryGetValue(parentComputedKey, out result))
             {
                 notSucceed = false;
                 return result;
@@ -76,7 +78,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
                 notSucceed = true;
                 if (_createNewRecordWhenLocalisedStringDoesNotExist)
                 {
-                    _developmentSetup.AddNewLocalizedItem(key, culture, _resourceKey);
+                    _developmentSetup.AddNewLocalizedItem(key, culture.ToString(), _resourceKey);
                     _localizations.Add(computedKey, computedKey);
                     return computedKey;
                 }
@@ -89,7 +91,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             }
         }
 
-        
+
 
     }
 }
