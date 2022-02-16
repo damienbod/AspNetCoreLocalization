@@ -110,7 +110,7 @@ namespace Localization.SqlLocalizer.DbStringLocalizer
             lock (_context)
             {
                 return _context.LocalizationRecords.Where(data => data.ResourceKey == resourceKey)
-                    .ToDictionary(kvp => (kvp.Key + "." + kvp.LocalizationCulture), kvp => kvp.Text);
+                    .ToDictionary(kvp => (kvp.Key + "." + kvp.LocalizationCulture), kvp => kvp.Text, StringComparer.OrdinalIgnoreCase);
             }
         }
 
