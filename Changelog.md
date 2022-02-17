@@ -2,6 +2,9 @@
 
 [Readme](https://github.com/damienbod/AspNetCoreLocalization/blob/master/README.md) 
 
+2022-02-17 3.1.1
+- Changes for (1) case insensitive searches and (2) falling back to parent record if not found
+
 2021-11-05 3.1.0
 - Updated packages
 - Add app support for Entity Framework 5.0 
