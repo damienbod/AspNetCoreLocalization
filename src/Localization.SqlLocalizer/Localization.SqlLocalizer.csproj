@@ -4,12 +4,12 @@
     <Description>SQL Localizer for ASP.NET Core, dotnet</Description>
     <VersionPrefix>3.0.0</VersionPrefix>
     <Authors>damienbod</Authors>
-    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0;net6.0;net7.0</TargetFrameworks>
     <title>Localization.SqlLocalizer</title>
     <Summary>ASP.NET Core Localization using SQL with EF Core</Summary>
     <PackageId>Localization.SqlLocalizer</PackageId>
     <PackageTags>Localization;SqlLocalizer;SQlite;Postgres;MS SQL Server;MySQL</PackageTags>
-    <PackageReleaseNotes>Release Notes: Version 3.1.0 Add app support for Entity Framework 5.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Release Notes: Version 3.1.0 Add app support for Entity Framework 5.0 6.0 and 7.0 much support</PackageReleaseNotes>
     <PackageIconUrl>http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/damienbod/AspNet5Localization</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
@@ -39,6 +39,20 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[5.0.0,)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[5.0.0,)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[5.0.0,)" />
+  </ItemGroup>
+   
+   <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[6.0.0,)" />
+  </ItemGroup>
+   
+    <ItemGroup Condition="'$(TargetFramework)'=='net7.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[7.0.0,)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="[7.0.0,)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[7.0.0,)" />
   </ItemGroup>
 
   <ItemGroup>
